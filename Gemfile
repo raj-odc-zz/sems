@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', path: "/home/selva/.rvm/gems/ruby-2.2.2@sems/bundler/gems/rails-fe55163f111b"
+gem 'rails', :git => 'https://github.com/rails/rails.git', :branch => 'v5.0.0.beta2'
 
 gem 'pg'
 # Use SCSS for stylesheets
