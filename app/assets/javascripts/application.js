@@ -13,11 +13,22 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-//= require common_js/bootstrap.min
+//= require common_js/bootstrap.min.js
 
 function deleteConformation(onclickMethod){
   $('#deleteProductModal').on('show.bs.modal', function () {
     var modal = $(this)
-    modal.find('.conform')..attr("onclick",onclickMethod)
-  }
+    modal.find('.conform').attr("onclick",onclickMethod)
+  });
+}
+
+function openModal(url,modalId){
+  $(modalId).modal({
+    remote: url,
+    backdrop: 'static'
+  })
+}
+
+function submitForm(form_id){
+  $('form'+form_id).submit()
 }

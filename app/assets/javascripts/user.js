@@ -1,3 +1,6 @@
+$(document).ready(function(){
+  userListGrid()
+})
 function userListDataSource(){
   var datasource = new kendo.data.DataSource({
     transport:{
@@ -5,7 +8,7 @@ function userListDataSource(){
               url: "/users",
               dataType: "json",
               complete: function (data, status) {
-                if(status == "success"){ showColumn(data);}
+                if(status == "success"){ }
               },
             },
             update: {
@@ -45,7 +48,7 @@ function userListDataSource(){
  return datasource
 }
 
- function hvacSystemsGrid() {
+ function userListGrid() {
      jQuery("#userList").kendoGrid({
          dataSource: userListDataSource(),
          resizable: true,
@@ -54,7 +57,6 @@ function userListDataSource(){
           },
          scrollable: false,
          sortable: true,
-         editable: "inline",
          columns: [
               {
                   field: "username",
@@ -78,10 +80,12 @@ function userListDataSource(){
 
 function edit_systems(e){
   var dataItem = this.dataItem(jQuery(e.currentTarget).closest("tr"));
-  // window.location.href = "/accessory_systems/"+dataItem.id+"/edit"
+  openModal("/users/"+dataItem.id+"/edit","#userModal")
 }
 
 function delete_systems(e){
   var dataItem = this.dataItem(jQuery(e.currentTarget).closest("tr"));
   doDelete(dataItem.id)
 }
+
+  // window.location.href = "/users/new"

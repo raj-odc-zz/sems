@@ -20,4 +20,5 @@ def get_dir_files(file_path)
   end
 end
 Dir.glob("app/assets/*").each { |file_or_dir| get_dir_files(file_or_dir) }
-Rails.application.config.assets.precompile += @names.flatten.compact
+
+Rails.application.config.assets.precompile += @names.flatten.compact.uniq

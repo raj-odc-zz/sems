@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   #
-  before_filter :find_by_id, only: [:edit,:update,:destroy]
-  before_filter :load_data, only: [:edit,:new]
+  before_action :find_by_id, only: [:edit,:update,:destroy]
+  before_action :load_data, only: [:edit,:new]
   def index
     respond_to do |format|
       format.html
@@ -10,18 +10,31 @@ class UsersController < ApplicationController
   end
 
   def create
+    @user = User.create(permit_all_params(:user))
+    respond_to do |format|
+      format.js
+    end
   end
 
   def new
+    @user = User.new
   end
 
   def edit
   end
 
   def update
+    @user.update_attributes(permit_all_params(:user))
+    respond_to do |format|
+      format.js
+    end
   end
 
   def destroy
+    @user.destroy
+    respond_to do |format|
+      format.js
+    end
   end
   #
   private
