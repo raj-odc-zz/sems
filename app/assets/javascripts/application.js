@@ -12,6 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
-//= require bootstrap.min
+//= require common_js/bootstrap.min
+
+function deleteConformation(onclickMethod){
+  $('#deleteProductModal').on('show.bs.modal', function () {
+    var modal = $(this)
+    modal.find('.conform')..attr("onclick",onclickMethod)
+  }
+}
