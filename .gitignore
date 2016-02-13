@@ -21,3 +21,4 @@
 .byebug_history
 app/views/layouts/schema_sql
 .idea/.rakeTasks
+.idea/workspace.xml
