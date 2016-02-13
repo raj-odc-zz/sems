@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
 //= require common_js/bootstrap.min.js
 
 function deleteConformation(onclickMethod){
@@ -31,4 +30,24 @@ function openModal(url,modalId){
 
 function submitForm(form_id){
   $('form'+form_id).submit()
+}
+
+function closeAllModals(){
+  $(".modal").modal("hide");
+}
+
+function closeModalByID(id){
+  $(id).modal("hide");
+}
+
+function message(type,message,title){
+  switch(type){
+    case "success":
+                  new Messi('', {autoclose:1200,padding: '0px',closeButton: false, width: '100px', title: message, titleClass: 'success',animate: {open:'fadein',close:'fadeOut'}});
+                  // new Messi(null,{title: 'message',titleClass: 'success',animate: {open:'fadein',close:'fadeOut'},autoclose: "1200",closeButton: false});
+                  break;
+    case "error":
+                  new Messi(message,{title: 'Error',titleClass: 'anim error',animate: { open: 'swing', close: 'bounceOutRight' },buttons: [ {id: 0, label: 'Close', val: 'X'} ]});
+                  break;
+  }
 }
