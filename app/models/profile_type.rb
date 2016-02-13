@@ -1,0 +1,2 @@
+class ProfileType < ApplicationRecord
+end

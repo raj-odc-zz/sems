@@ -1,0 +1,2 @@
+class UserPreviousDetail < ApplicationRecord
+end

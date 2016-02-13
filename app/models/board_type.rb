@@ -1,0 +1,2 @@
+class BoardType < ApplicationRecord
+end
