@@ -1,7 +1,4 @@
 class User < ActiveRecord::Base
+  #has_secure_password
   attr_accessor :password,:password_conformation
-  #private
-  def encrypt_password(password, salt)
-    Digest::SHA2.hexdigest(password + "wibble" + salt)
-  end
 end
