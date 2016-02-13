@@ -20,3 +20,4 @@
 # Ignore Byebug command history file.
 .byebug_history
 app/views/layouts/schema_sql
+.idea/.rakeTasks

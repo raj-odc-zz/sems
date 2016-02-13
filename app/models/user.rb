@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   attr_accessor :password,:password_conformation
+  has_one :profile
+  belongs_to :role
   #private
 =begin
   def encrypt_password(password, salt)

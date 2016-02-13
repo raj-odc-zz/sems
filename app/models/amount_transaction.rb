@@ -1,0 +1,2 @@
+class AmountTransaction < ApplicationRecord
+end
