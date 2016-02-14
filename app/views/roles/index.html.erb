@@ -8,11 +8,11 @@
     </div>
       <br />
       <div class="row">
-        <a data-toggle="modal" href="/roles/new" data-target="#roleModal" clas="new-icon">New</a>
+        <a data-toggle="modal" href="#" clas="new-icon" onclick="openModal('/roles/new','#roleModal')">New</a>
       </div>
       <div class = "row">
         <div class="col-lg-10 col-md-10 col-sm-10">
-          <div id="userList"></div>
+          <div id="roleList"></div>
         </div>
       </div>
     </div>
@@ -21,9 +21,8 @@
 
 <!-- Modal -->
 <div class="modal fade" id="roleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        </div>
-    </div>
+  <div class="modal-dialog">
+    <div class="modal-content"></div>
+  </div>
 </div>
 

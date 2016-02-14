@@ -22,14 +22,19 @@ function deleteConformation(onclickMethod){
 }
 
 function openModal(url,modalId){
+  remove_data_modal();
   $(modalId).modal({
     remote: url,
     backdrop: 'static'
   })
 }
 
-function submitForm(form_id){
-  $('form'+form_id).submit()
+function submitForm(form_id,gridId){
+  var form = $(form_id)
+  var valuesToSubmit = form.serialize();
+  var url = form.attr( "action" );
+  var method = form.attr( "method" );
+  ajaxCall(url,method,valuesToSubmit,gridId)
 }
 
 function closeAllModals(){
@@ -40,7 +45,35 @@ function closeModalByID(id){
   $(id).modal("hide");
 }
 
-function message(type,message,title){
+function refereshGrid(gridId){
+  $(gridId).data("kendoGrid").dataSource.read();
+}
+
+function doDelete(url,id,gridId) {
+  ajaxCall(url,"Delete",{},gridId,"Deleted")
+}
+
+function ajaxCall(url,method,valuesToSubmit,gridId,messageContent){
+  var messageContent = messageContent || "Saved"
+  $.ajax({
+    url: url,
+    type: method,
+    data: valuesToSubmit,
+    success: function (data) {
+      closeAllModals()
+      if (gridId != "undefined" && gridId !="") {refereshGrid(gridId);}
+      if (data.status == 200) { message("success",messageContent);}
+    },
+  });
+}
+
+function remove_data_modal(){
+  jQuery('body').on('hidden.bs.modal', '.modal', function () {
+    jQuery(this).removeData('bs.modal');
+  });
+}
+
+function message(type,message){
   switch(type){
     case "success":
                   new Messi('', {autoclose:1200,padding: '0px',closeButton: false, width: '100px', title: message, titleClass: 'success',animate: {open:'fadein',close:'fadeOut'}});

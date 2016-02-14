@@ -3,5 +3,4 @@ module HelperMethods
   included do
     helper_method
   end
-
 end
