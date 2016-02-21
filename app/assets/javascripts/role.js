@@ -16,10 +16,8 @@ function roleListDataSource(){
             id: "id",
             fields: {
                id: { type: "string", editable: false},
-               username: { type: "string", editable: true},
-               email_id: { type: "string", editable: true},
-               role: { type: "string", editable: true},
-              }
+               name: { type: "string", editable: true},
+             }
             }
         },
 
