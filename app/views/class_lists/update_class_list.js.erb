@@ -1,0 +1,3 @@
+<%select = select_tag "profile[class_list_id]", options_from_collection_for_select(@class_lists, "id", "class_name", :prompt => true), :class => "form-control"%>
+<%=binding.pry%>
+$("#profile_class_list_id").html('<%=select.html_safe%>')

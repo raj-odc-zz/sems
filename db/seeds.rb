@@ -15,5 +15,7 @@ Board.where("name =?","test clg").destroy_all
 board = Board.create(:name => "test clg", :board_type_id => board_type.try(:id))
 ClassList.where("class_name =?","test").destroy_all
 ClassList.create(board_id: board.id,class_name: "test",section: "A",major:"CSE")
-
-
+ProfileType.where("name =?","Test Profile").delete_all
+ProfileType.create(:name => "Test Profile")
+AddressType.create({:name => "primary"})
+AddressType.create({:name => "secondary"})

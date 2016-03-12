@@ -84,3 +84,11 @@ function message(type,message){
                   break;
   }
 }
+
+function simpleAjaxCall(url,type,data){
+  $.ajax({
+    url: url,
+    type: type,
+    data: data
+  })
+}

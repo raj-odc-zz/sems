@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   resources :address
   resources :address_types
   resources :board_types
+  resources :class_lists do
+    collection do
+      get "update_class_list"
+    end
+  end
   resources :fees_types
   resources :message_types
   resources :profile_types
