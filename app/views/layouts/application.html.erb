@@ -9,6 +9,9 @@
     <%= yield(:head) %>
   </head>
   <body>
+    <!-- Navigation Main menu -->
+    <%= render :partial => "layouts/main_navigation_menu.html.erb"%>
+    <!-- body content -->
     <%= yield %>
   </body>
 </html>

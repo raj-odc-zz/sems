@@ -8,4 +8,13 @@ class Profile < ApplicationRecord
   has_many :user_previous_details
   has_many :salary_detail
   has_many :payment_detail
+  # validattions
+  validates_presence_of :user
+  #
+  #
+  class << self
+    def load_data
+      # return Role.all,Board.all,
+    end
+  end
 end

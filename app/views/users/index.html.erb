@@ -1,5 +1,5 @@
 <% content_for :head do %>
-  <%= javascript_include_tag "role" %>
+  <%= javascript_include_tag "user" %>
 <% end %>
 
 <section class="main-content">
@@ -8,7 +8,7 @@
     </div>
       <br />
       <div class="row">
-        <a data-toggle="modal" href="/roles/new" data-target="#roleModal" clas="new-icon">New</a>
+        <a data-toggle="modal" href="/users/new" data-target="#userModal" clas="new-icon">New</a>
       </div>
       <div class = "row">
         <div class="col-lg-10 col-md-10 col-sm-10">
@@ -20,7 +20,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="roleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         </div>

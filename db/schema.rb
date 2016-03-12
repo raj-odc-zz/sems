@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160213181309) do
+ActiveRecord::Schema.define(version: 20160312122202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20160213181309) do
     t.datetime "updated_at", null: false
     t.string   "name"
     t.integer  "board_id"
-    t.string   "class"
+    t.string   "class_name"
     t.string   "section"
     t.string   "major"
     t.index ["board_id"], name: "index_class_lists_on_board_id", using: :btree
@@ -150,7 +150,7 @@ ActiveRecord::Schema.define(version: 20160213181309) do
     t.datetime "updated_at",               null: false
     t.integer  "roll_no"
     t.integer  "profile_type_id"
-    t.integer  "board_type_id"
+    t.integer  "board_id"
     t.integer  "class_list_id"
     t.integer  "user_id"
     t.string   "father_name"
@@ -163,7 +163,7 @@ ActiveRecord::Schema.define(version: 20160213181309) do
     t.string   "guardian_contact_number"
     t.string   "guardian_email_id"
     t.string   "blood_group"
-    t.index ["board_type_id"], name: "index_profiles_on_board_type_id", using: :btree
+    t.index ["board_id"], name: "index_profiles_on_board_id", using: :btree
     t.index ["class_list_id"], name: "index_profiles_on_class_list_id", using: :btree
     t.index ["profile_type_id"], name: "index_profiles_on_profile_type_id", using: :btree
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
@@ -251,7 +251,7 @@ ActiveRecord::Schema.define(version: 20160213181309) do
   add_foreign_key "payment_infos", "boards"
   add_foreign_key "payment_infos", "class_lists"
   add_foreign_key "payment_infos", "fees_types"
-  add_foreign_key "profiles", "board_types"
+  add_foreign_key "profiles", "board_types", column: "board_id"
   add_foreign_key "profiles", "class_lists"
   add_foreign_key "profiles", "profile_types"
   add_foreign_key "profiles", "users"
