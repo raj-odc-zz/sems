@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160312122202) do
+ActiveRecord::Schema.define(version: 20160320130210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -187,6 +187,17 @@ ActiveRecord::Schema.define(version: 20160312122202) do
     t.index ["profile_id"], name: "index_salary_details_on_profile_id", using: :btree
   end
 
+  create_table "site_customizations", force: :cascade do |t|
+    t.string   "menu_name"
+    t.string   "bg_color"
+    t.string   "text_color"
+    t.string   "font_style"
+    t.integer  "boards_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["boards_id"], name: "index_site_customizations_on_boards_id", using: :btree
+  end
+
   create_table "status_types", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -258,6 +269,7 @@ ActiveRecord::Schema.define(version: 20160312122202) do
   add_foreign_key "salary_details", "boards"
   add_foreign_key "salary_details", "fees_types"
   add_foreign_key "salary_details", "profiles"
+  add_foreign_key "site_customizations", "boards", column: "boards_id"
   add_foreign_key "subjects", "class_lists"
   add_foreign_key "user_previous_details", "profiles"
   add_foreign_key "users", "profiles"
