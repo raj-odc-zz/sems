@@ -3,42 +3,53 @@
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">                
+            <div class="navbar-header" style="width:8%;">                
                 <img src="" class="site_logo"> 
             </div>
-            <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
+            <!-- Top Left Menu Items -->
+            <ul class="nav navbar-left top-nav">
                 <li class="dropdown-submenu">
-                    <a href="#" >test<b class="caret"></b></a>
+                    <a href="#" >Student<b class="caret"></b></a>
                     <ul class="dropdown-menu message-dropdown">
                         <li class="message-preview">
-                            <a href="#" >Submenu test</a>
+                            <a href="#" >Student List</a>
                         </li>                        
                         <li class="message-footer">
-                            <a href="#">test2</a>
+                            <a href="#">Add Student</a>
                         </li>
                     </ul>
                 </li>
-                <%if current_user%>
                 <li class="dropdown-submenu">
+                    <a href="#" >Staff<b class="caret"></b></a>
+                    <ul class="dropdown-menu message-dropdown">
+                        <li class="message-preview">
+                            <a href="#" >Staff List</a>
+                        </li>                        
+                        <li class="message-footer">
+                            <a href="#">Add Staff</a>
+                        </li>
+                    </ul>
+                </li>
+                            </ul>
+            <ul class="nav navbar-right top-nav">
+                <%if current_user%>
+                <li class="dropdown-submenu" >
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%=current_user.username%><b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                        </li>
-                        <li>
                             <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                           <%= link_to "Logout", destroy_user_session_path, method: :delete%>
                         </li>
                     </ul>
                 </li>
                 <%end%>
+
             </ul>
         </nav>
 
