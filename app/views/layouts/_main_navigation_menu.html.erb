@@ -48,6 +48,10 @@
                         </li>
                     </ul>
                 </li>
+                <%else%>
+                     <li>
+                           <%= link_to "Login", new_user_session_path, method: :get%>
+                    </li>
                 <%end%>
 
             </ul>
