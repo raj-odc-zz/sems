@@ -22,6 +22,12 @@ Rails.application.routes.draw do
   resources :roles
   resources :users
   resources :site_customizations
+  resources :staffs do
+    collection do
+      get "mark_list"
+      get "mark_entry"
+    end
+  end
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~API ROUTES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   namespace :api, :defaults => { :format => 'json',layout: false } do
     resources :addresses
