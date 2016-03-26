@@ -1,8 +1,8 @@
-class Api::ClassListController < ApplicationController
+class Api::ClassListsController < ApplicationController
   before_action :find_by_id, only: [:update,:destroy]
   #
   def index
-    @class_lists = ClassList.all
+    @class_lists = ClassList.class_list_by_board current_board.try(:id)
     respond_to do |format|
       format.json
     end

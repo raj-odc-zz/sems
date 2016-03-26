@@ -34,7 +34,7 @@ function classListDataSource(){
 }
 
 function classListGrid() {
-    jQuery("#addressList").kendoGrid({
+    jQuery("#classList").kendoGrid({
         dataSource: classListDataSource(),
         resizable: true,
         pageable: {
@@ -79,6 +79,7 @@ function delete_systems(e){
 }
 
 function showClass(e){
-    window.location.href = "/class_list_infos   "
+    var dataItem = this.dataItem(jQuery(e.currentTarget).closest("tr"));
+    window.location.href = "class_lists/"+dataItem.id+"/class_list_info"
 }
 

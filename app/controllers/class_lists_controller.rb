@@ -7,11 +7,15 @@ class ClassListsController < ApplicationController
   end
 
   def index
-    @boards = Board.all
+    # @class_lists = ClassList.class_list_by_board current_board.try(:all)
   end
 
   def new
     @class_list = class_list.new
+  end
+  #
+  def class_list_info
+
   end
   #
   def edit

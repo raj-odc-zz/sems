@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160326070836) do
+ActiveRecord::Schema.define(version: 20160312122202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -169,14 +169,6 @@ ActiveRecord::Schema.define(version: 20160326070836) do
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
 
-  create_table "ranks", force: :cascade do |t|
-    t.integer "profile_id"
-    t.integer "exam_type_id"
-    t.integer "rank"
-    t.index ["exam_type_id"], name: "index_ranks_on_exam_type_id", using: :btree
-    t.index ["profile_id"], name: "index_ranks_on_profile_id", using: :btree
-  end
-
   create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -193,17 +185,6 @@ ActiveRecord::Schema.define(version: 20160326070836) do
     t.index ["board_id"], name: "index_salary_details_on_board_id", using: :btree
     t.index ["fees_type_id"], name: "index_salary_details_on_fees_type_id", using: :btree
     t.index ["profile_id"], name: "index_salary_details_on_profile_id", using: :btree
-  end
-
-  create_table "site_customizations", force: :cascade do |t|
-    t.string   "menu_name"
-    t.string   "bg_color"
-    t.string   "text_color"
-    t.string   "font_style"
-    t.integer  "boards_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["boards_id"], name: "index_site_customizations_on_boards_id", using: :btree
   end
 
   create_table "status_types", force: :cascade do |t|
@@ -274,12 +255,9 @@ ActiveRecord::Schema.define(version: 20160326070836) do
   add_foreign_key "profiles", "class_lists"
   add_foreign_key "profiles", "profile_types"
   add_foreign_key "profiles", "users"
-  add_foreign_key "ranks", "exam_types"
-  add_foreign_key "ranks", "profiles"
   add_foreign_key "salary_details", "boards"
   add_foreign_key "salary_details", "fees_types"
   add_foreign_key "salary_details", "profiles"
-  add_foreign_key "site_customizations", "boards", column: "boards_id"
   add_foreign_key "subjects", "class_lists"
   add_foreign_key "user_previous_details", "profiles"
   add_foreign_key "users", "profiles"

@@ -1,18 +1,47 @@
 <% content_for :head do %>
+  <script type="text/javascript">
+    var class_list_id = "<%= params.try(:[],'id')%>"
+  </script>
   <%= javascript_include_tag "class_info" %>
 <% end %>
 
 <section class="main-content">
   <div class="container">
     <div class="clearfix">
-    </div>
-    <br />
-    <div class="row">
-      <a data-toggle="modal" href="#" clas="new-icon" onclick="openModal('/class_lists/new','#classInfoModal')">New</a>
-    </div>
-    <div class = "row">
-      <div class="col-lg-10 col-md-10 col-sm-10">
-        <div id="classInfo"></div>
+      <div id="example" class="k-content">
+        <div class="panel-container">
+          <div class="row">
+            <a data-toggle="modal" href="#" clas="new-icon" onclick="openModal('/class_lists/new','#classInfoModal')">New</a>
+          </div>
+           <div id="tabstrip">
+            <ul>
+              <li class="k-state-active dynamic-content">
+                Subject Info
+              </li>
+              <li class="dynamic-content">
+                Exam Info
+              </li>
+              <li class="dynamic-content">
+                Student Info
+              </li>
+              <li class="dynamic-content">
+                Staff Info
+              </li>
+            </ul>
+            <div class="row panel-block">
+              <div id="subInfo"></div>
+            </div>
+            <div class="row panel-block">
+              <div id="examInfo"></div>
+            </div>
+            <div class="row panel-block">
+              <div id="studentInfo"></div>
+            </div>
+            <div class="row panel-block">
+              <div id="staffInfo"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -24,4 +53,5 @@
     <div class="modal-content"></div>
   </div>
 </div>
+
 

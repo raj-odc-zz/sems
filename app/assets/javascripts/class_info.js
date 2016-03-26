@@ -1,12 +1,16 @@
 $(document).ready(function(){
-    classListGrid()
+  var tabStrips = jQuery('#tabstrip').kendoTabStrip().data("kendoTabStrip");
+  subInfoGrid()
+  examTypeGrid()
+    // classListGrid()
 })
-function classListDataSource(){
+function subInfoDataSource(){
     var datasource = new kendo.data.DataSource({
         transport:{
             read:{
-                url: "/api/class_lists",
+                url: "/api/subjects",
                 dataType: "json",
+                data: {class_list_id: class_list_id},
             },
         },
         schema: {
@@ -16,10 +20,7 @@ function classListDataSource(){
                 id: "id",
                 fields: {
                     id: { type: "string", editable: false},
-                    board_name: { type: "string", editable: true},
-                    class_name: { type: "string", editable: true},
-                    section: { type: "string", editable: true},
-                    major: { type: "string", editable: true},
+                    name: { type: "string", editable: true},
                 }
             }
         },
@@ -33,9 +34,9 @@ function classListDataSource(){
     return datasource
 }
 
-function classListGrid() {
-    jQuery("#addressList").kendoGrid({
-        dataSource: classListDataSource(),
+function subInfoGrid() {
+    jQuery("#subInfo").kendoGrid({
+        dataSource: subInfoDataSource(),
         resizable: true,
         pageable: {
             refresh: true,
@@ -44,22 +45,12 @@ function classListGrid() {
         sortable: true,
         columns: [
             {
-                field: "class_name",
-                title: "Class"
+                field: "name",
+                title: "Subject"
             },
-            {
-                field: "section",
-                title: "Section"
-            },
-            {
-                field: "major",
-                title: "Major"
-            },
-
             {command: [
                         { name:"edit",text: "Edit",click: edit_systems },
                         { name:"Delete", text: "Delete", click: delete_systems },
-                        { name:"show", text: "Show", click: showClass },
                       ]
             },
 
@@ -67,6 +58,118 @@ function classListGrid() {
     });
 
 }
+
+function examTypeDataSource(){
+    var datasource = new kendo.data.DataSource({
+        transport:{
+            read:{
+                url: "/api/exam_types",
+                dataType: "json",
+                data: {class_list_id: class_list_id},
+
+            },
+        },
+        schema: {
+            total: 'total',
+            data: 'data',
+            model: {
+                id: "id",
+                fields: {
+                    id: { type: "string", editable: false},
+                    name: { type: "string", editable: true},
+                }
+            }
+        },
+
+        batch: true,
+        pageSize: 100,
+        serverPaging: false,
+        serverFiltering: false,
+        serverSorting: false
+    });
+    return datasource
+}
+
+function examTypeGrid() {
+    jQuery("#examInfo").kendoGrid({
+        dataSource: examTypeDataSource(),
+        resizable: true,
+        pageable: {
+            refresh: true,
+        },
+        scrollable: false,
+        sortable: true,
+        columns: [
+            {
+                field: "name",
+                title: "Subject"
+            },
+            {command: [
+                        { name:"edit",text: "Edit",click: edit_systems },
+                        { name:"Delete", text: "Delete", click: delete_systems },
+                      ]
+            },
+
+        ],
+    });
+
+}
+
+function studentDataSource(){
+    var datasource = new kendo.data.DataSource({
+        transport:{
+            read:{
+                url: "/api/students",
+                dataType: "json",
+                data: {class_list_id: class_list_id},
+            },
+        },
+        schema: {
+            total: 'total',
+            data: 'data',
+            model: {
+                id: "id",
+                fields: {
+                    id: { type: "string", editable: false},
+                    name: { type: "string", editable: true},
+                }
+            }
+        },
+
+        batch: true,
+        pageSize: 100,
+        serverPaging: false,
+        serverFiltering: false,
+        serverSorting: false
+    });
+    return datasource
+}
+
+function studentGrid() {
+    jQuery("#subInfo").kendoGrid({
+        dataSource: studentDataSource(),
+        resizable: true,
+        pageable: {
+            refresh: true,
+        },
+        scrollable: false,
+        sortable: true,
+        columns: [
+            {
+                field: "name",
+                title: "Subject"
+            },
+            {command: [
+                        { name:"edit",text: "Edit",click: edit_systems },
+                        { name:"Delete", text: "Delete", click: delete_systems },
+                      ]
+            },
+
+        ],
+    });
+
+}
+
 
 function edit_systems(e){
     var dataItem = this.dataItem(jQuery(e.currentTarget).closest("tr"));
@@ -79,6 +182,6 @@ function delete_systems(e){
 }
 
 function showClass(e){
-    window.location.href = "/class_list_infos   "
+    window.location.href = "/class_lists/class_list_info"
 }
 
