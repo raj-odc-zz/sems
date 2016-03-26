@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :roles
   resources :users
   resources :site_customizations
+  resources :fees_structures
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~API ROUTES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   namespace :api, :defaults => { :format => 'json',layout: false } do
     resources :addresses
@@ -42,6 +43,7 @@ Rails.application.routes.draw do
     resources :students
     resources :subjects
     resources :users
+    resources :fees_structures
   end
   # resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

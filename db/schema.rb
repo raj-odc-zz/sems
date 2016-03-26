@@ -79,6 +79,18 @@ ActiveRecord::Schema.define(version: 20160326112220) do
     t.index ["class_list_id"], name: "index_exam_types_on_class_list_id", using: :btree
   end
 
+  create_table "fees_structures", force: :cascade do |t|
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "class_list_id"
+    t.integer  "board_id"
+    t.integer  "fees_type_id"
+    t.float    "amount"
+    t.index ["board_id"], name: "index_fees_structures_on_board_id", using: :btree
+    t.index ["class_list_id"], name: "index_fees_structures_on_class_list_id", using: :btree
+    t.index ["fees_type_id"], name: "index_fees_structures_on_fees_type_id", using: :btree
+  end
+
   create_table "fees_types", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -122,18 +134,6 @@ ActiveRecord::Schema.define(version: 20160326112220) do
     t.float    "paid_amount"
     t.index ["payment_info_id"], name: "index_payment_details_on_payment_info_id", using: :btree
     t.index ["profile_id"], name: "index_payment_details_on_profile_id", using: :btree
-  end
-
-  create_table "payment_infos", force: :cascade do |t|
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "class_list_id"
-    t.integer  "board_id"
-    t.integer  "fees_type_id"
-    t.float    "amount"
-    t.index ["board_id"], name: "index_payment_infos_on_board_id", using: :btree
-    t.index ["class_list_id"], name: "index_payment_infos_on_class_list_id", using: :btree
-    t.index ["fees_type_id"], name: "index_payment_infos_on_fees_type_id", using: :btree
   end
 
   create_table "profile_types", force: :cascade do |t|
@@ -271,16 +271,16 @@ ActiveRecord::Schema.define(version: 20160326112220) do
   add_foreign_key "boards", "board_types"
   add_foreign_key "class_lists", "boards"
   add_foreign_key "exam_types", "class_lists"
+  add_foreign_key "fees_structures", "boards"
+  add_foreign_key "fees_structures", "class_lists"
+  add_foreign_key "fees_structures", "fees_types"
   add_foreign_key "marks", "exam_types"
   add_foreign_key "marks", "profiles"
   add_foreign_key "marks", "subjects"
   add_foreign_key "messages", "boards"
   add_foreign_key "messages", "message_types"
-  add_foreign_key "payment_details", "payment_infos"
+  add_foreign_key "payment_details", "fees_structures", column: "payment_info_id"
   add_foreign_key "payment_details", "profiles"
-  add_foreign_key "payment_infos", "boards"
-  add_foreign_key "payment_infos", "class_lists"
-  add_foreign_key "payment_infos", "fees_types"
   add_foreign_key "profiles", "board_types", column: "board_id"
   add_foreign_key "profiles", "class_lists"
   add_foreign_key "profiles", "profile_types"

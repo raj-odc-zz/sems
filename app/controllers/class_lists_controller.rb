@@ -11,7 +11,7 @@ class ClassListsController < ApplicationController
   end
 
   def new
-    @class_list = class_list.new
+    @class_list = ClassList.new
   end
   #
   def class_list_info
