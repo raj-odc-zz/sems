@@ -1,11 +1,11 @@
 $(document).ready(function(){
-    FeesStructureListGrid()
+    SalaryDetailListGrid()
 })
-function FeesStructureListDataSource(){
+function SalaryDetailListDataSource(){
     var datasource = new kendo.data.DataSource({
         transport:{
             read:{
-                url: "/api/fees_structures",
+                url: "/api/salary_details",
                 dataType: "json",
             },
         },
@@ -17,7 +17,7 @@ function FeesStructureListDataSource(){
                 fields: {
                     id: { type: "string", editable: false},
                     board_name: { type: "string", editable: true},
-                    class_name: { type: "string", editable: true},
+                    staff_name: { type: "string", editable: true},
                     fees_type: { type: "string", editable: true},
                     amount: { type: "string", editable: true},
                 }
@@ -33,9 +33,9 @@ function FeesStructureListDataSource(){
     return datasource
 }
 
-function FeesStructureListGrid() {
-    jQuery("#fees_structure_List").kendoGrid({
-        dataSource: FeesStructureListDataSource(),
+function SalaryDetailListGrid() {
+    jQuery("#salary_detail_List").kendoGrid({
+        dataSource: SalaryDetailListDataSource(),
         resizable: true,
         pageable: {
             refresh: true,
@@ -44,8 +44,8 @@ function FeesStructureListGrid() {
         sortable: true,
         columns: [
            {
-                field: "class_list_id",
-                title: "Class"
+                field: "profile_id",
+                title: "Staff"
             },
             {
                 field: "fees_type_id",
@@ -64,12 +64,12 @@ function FeesStructureListGrid() {
 
 function edit_systems(e){
     var dataItem = this.dataItem(jQuery(e.currentTarget).closest("tr"));
-    openModal("fees_structures/"+dataItem.id+"/edit","#feesstructureModal")
+    openModal("salary_details/"+dataItem.id+"/edit","#salarydetailModal")
 }
 
 function delete_systems(e){
     var dataItem = this.dataItem(jQuery(e.currentTarget).closest("tr"));
-    doDelete("/api/fees_structures/"+dataItem.id,dataItem.id,'#fees_structure_List')
+    doDelete("/api/salary_details/"+dataItem.id,dataItem.id,'#salary_detail_List')
 }
 
 // window.location.href = "/roles/new"

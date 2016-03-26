@@ -1,13 +1,13 @@
-class FeesStructuresController < ApplicationController
+class SalaryDetailsController < ApplicationController
   layout :fetch_layouts
   before_action :find_by_id, only: [:edit]
   #
   def index
-    @fees_structure = FeesStructure.all
+    @salary_detail = SalaryDetail.all
   end
 
   def new
-    @fees_structure = FeesStructure.new
+    @salary_detail = SalaryDetail.new
   end
   #
   #
@@ -17,6 +17,6 @@ class FeesStructuresController < ApplicationController
   private
   #
   def find_by_id
-    @fees_structure = FeesStructure.find_by_id params[:id]
+    @salary_detail = SalaryDetail.find_by_id params[:id]
   end
 end 

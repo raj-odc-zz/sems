@@ -13,6 +13,10 @@ class Profile < ApplicationRecord
   #
   accepts_nested_attributes_for :addresses
   #
+
+  # def self.name
+  #   self.first_name.to_s +' '+ self.last_name.to_s
+  # end
   class << self
     def load_data
       # return .all,Board.all,
