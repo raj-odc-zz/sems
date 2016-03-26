@@ -25,4 +25,4 @@ ProfileType.create(:name => "Test Profile")
 AddressType.create({:name => "primary"})
 AddressType.create({:name => "secondary"})
 subjects.each {|sub| Subject.create(:class_list_id => class_list.id,name: sub)}
-exam_types.each {|name| ExamType.create(:name => name) }
+exam_types.each {|name| ExamType.create(:name => name, :class_list_id => class_list.id) }

@@ -1,0 +1,2 @@
+module ExamInfosHelper
+end

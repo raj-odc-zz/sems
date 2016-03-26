@@ -65,7 +65,7 @@ body {
 .top-nav>.open>a,
 .top-nav>.open>a:hover,
 .top-nav>.open>a:focus {
-    color: #ddd !important;   
+    color: #ddd !important;
     background-color: #256BA0 !important;
 }
 
@@ -164,7 +164,7 @@ ul.alert-dropdown {
 }
 
 .navbar-inverse{background-color:#556681 !important; height:56px;}
-.navbar-inverse .navbar-nav>.active>a, 
+.navbar-inverse .navbar-nav>.active>a,
 .navbar-inverse .navbar-nav>.active>a:focus,
  .navbar-inverse .navbar-nav>.active>a:hover{
     color: black !important;

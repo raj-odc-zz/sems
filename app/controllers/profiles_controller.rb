@@ -4,10 +4,13 @@ class ProfilesController < ApplicationController
   before_action :find_by_id, only: [:edit]
   before_action :load_data, only:[:new, :edit]
   #
+  def index
+    redirect_to user_has_profile? ? edit_profile_path(current_user.profile.id) : new_profile_path
+  end
   def new
     begin
-      user_has_profile?
-      @profile = Profile.new(user_id: params.try(:[],"user_id"))
+      redirect_to edit_profile_path(profile.id) if user_has_profile?
+      @profile = Profile.new(user_id: current_user.try(:id))
       initiate_address
     rescue Exception => e
       redirect_to root_path
@@ -19,6 +22,7 @@ class ProfilesController < ApplicationController
   end
   #
   def edit
+    redirect_to new_profile_path unless user_has_profile?
     initiate_address
   end
   #
@@ -28,14 +32,8 @@ class ProfilesController < ApplicationController
     @profile = Profile.find_by_id params[:id]
   end
   #
-  def find_user_by_id
-    @user = User.find_by_id params[:user_id]
-  end
-  #
   def user_has_profile?
-    find_user_by_id
-    profile = @user.profile
-    redirect_to edit_profile_path(profile.id) if profile.present?
+    return current_user.profile.present?
   end
 
   def load_data

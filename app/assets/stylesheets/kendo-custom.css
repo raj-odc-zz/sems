@@ -1,0 +1,11 @@
+.tabstrip-items {
+    background-color: #555555 !important;
+    background-image: none;
+    border-color: #847968 !important;
+}
+
+.k-header {
+    background-image: none !important;
+    background-position: 50% 50%;
+    background-color: white !important;
+}

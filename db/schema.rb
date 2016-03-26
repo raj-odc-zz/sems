@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160326070836) do
+ActiveRecord::Schema.define(version: 20160326112220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -206,6 +206,17 @@ ActiveRecord::Schema.define(version: 20160326070836) do
     t.index ["boards_id"], name: "index_site_customizations_on_boards_id", using: :btree
   end
 
+  create_table "staff_classes", force: :cascade do |t|
+    t.integer  "class_list_id"
+    t.integer  "profile_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "subject_id"
+    t.index ["class_list_id"], name: "index_staff_classes_on_class_list_id", using: :btree
+    t.index ["profile_id"], name: "index_staff_classes_on_profile_id", using: :btree
+    t.index ["subject_id"], name: "index_staff_classes_on_subject_id", using: :btree
+  end
+
   create_table "status_types", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -280,6 +291,9 @@ ActiveRecord::Schema.define(version: 20160326070836) do
   add_foreign_key "salary_details", "fees_types"
   add_foreign_key "salary_details", "profiles"
   add_foreign_key "site_customizations", "boards", column: "boards_id"
+  add_foreign_key "staff_classes", "class_lists"
+  add_foreign_key "staff_classes", "profiles"
+  add_foreign_key "staff_classes", "subjects"
   add_foreign_key "subjects", "class_lists"
   add_foreign_key "user_previous_details", "profiles"
   add_foreign_key "users", "profiles"

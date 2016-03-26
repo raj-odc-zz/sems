@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-   devise_for :users
+  devise_for :users
   #
-  root to: "users#index"
+  root to: "profiles#index"
   #
   resources :address
   resources :address_types
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get "class_list_info"
     end
   end
+  resources :exam_infos
   resources :fees_types
   resources :message_types
   resources :profile_types
@@ -33,6 +34,7 @@ Rails.application.routes.draw do
     end
     resources :exam_types
     resources :fees_types
+    resources :marks
     resources :message_types
     resources :profile_types
     resources :profiles

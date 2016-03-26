@@ -1,0 +1,13 @@
+<%subs = Subject.fetch_by_exam_type student.try(:class_list_id),exam_type.try(:id),student.id%>
+<%subs.each do |sub|%>
+  <div class="row">
+    <div class="form-group">
+      <div class="col-lg-12 col-md-12 col-sm-12 editable-wrapper">
+        <%= label_tag nil,sub.try(:name), :class => "col-lg-4 col-md-4 col-sm-4 control-label" %>
+        <div class="col-lg-3 col-md-3 col-sm-3">
+          <%= text_field_tag nil,sub.try(:marks).try(:first).try(:mark),:class => "form-control",disabled: true %>
+        </div>
+      </div>
+    </div>
+  </div>
+<%end%>

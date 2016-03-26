@@ -1,0 +1,43 @@
+<% content_for :head do %>
+  <script type="text/javascript">
+    var class_list_id = "<%= params.try(:[],'id')%>"
+  </script>
+  <%= javascript_include_tag "exam_info.js" %>
+<% end %>
+
+<section class="main-content">
+  <div class="container">
+    <div class="clearfix">
+      <div id="example" class="k-content">
+        <div class="panel-container">
+          <div class="row">
+            <a data-toggle="modal" href="#" clas="new-icon" onclick="openModal('/class_lists/new','#classInfoModal')">New</a>
+          </div>
+           <div id="tabstrip">
+            <ul>
+              <%@exam_types.each_with_index do |exam_type,i| %>
+                <li class="<%= i==0 ? 'k-state-active' : ''%> dynamic-content">
+                  <%=exam_type.try(:name)%>
+                </li>
+              <%end%>
+            </ul>
+            <%@exam_types.each do |exam_type|%>
+              <div class="row panel-block">
+                <%= render partial: "mark_info.html.erb",locals: {exam_type: exam_type,student: @student}%>
+              </div>
+            <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="classInfoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content"></div>
+  </div>
+</div>
+
+
