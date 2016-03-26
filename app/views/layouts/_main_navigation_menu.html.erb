@@ -1,20 +1,61 @@
-<div class="navbar navbar-default navbar-static-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="http://designbootstrap.com/livedemos/2015/01/11/user-profile/index.html#">Design Bootstrap</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav ">
-                <li><a href="#">HOME</a></li>
-                <li><a href="#">ABOUT</a></li>
-                <li><a href="#">SERVICES</a></li>
-                <li><a href="#">CONTACT</a></li>
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header" style="width:8%;">                
+                <img src="" class="site_logo"> 
+            </div>
+            <!-- Top Left Menu Items -->
+            <ul class="nav navbar-left top-nav">
+                <li class="dropdown-submenu">
+                    <a href="#" >Student<b class="caret"></b></a>
+                    <ul class="dropdown-menu message-dropdown">
+                        <li class="message-preview">
+                            <a href="#" >Student List</a>
+                        </li>                        
+                        <li class="message-footer">
+                            <a href="#">Add Student</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown-submenu">
+                    <a href="#" >Staff<b class="caret"></b></a>
+                    <ul class="dropdown-menu message-dropdown">
+                        <li class="message-preview">
+                            <a href="#" >Staff List</a>
+                        </li>                        
+                        <li class="message-footer">
+                            <a href="#">Add Staff</a>
+                        </li>
+                    </ul>
+                </li>
+                            </ul>
+            <ul class="nav navbar-right top-nav">
+                <%if current_user%>
+                <li class="dropdown-submenu" >
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%=current_user.username%><b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                           <%= link_to "Logout", destroy_user_session_path, method: :delete%>
+                        </li>
+                    </ul>
+                </li>
+                <%end%>
+
             </ul>
+        </nav>
+
+                 </div>
+            <!-- /.container-fluid -->
         </div>
+        <!-- /#page-wrapper -->
     </div>
-</div>
+    

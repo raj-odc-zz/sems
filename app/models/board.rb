@@ -5,4 +5,5 @@ class Board < ApplicationRecord
   has_many :class_list
   has_many :payment_info
   has_many :salary_detail
+  has_many :site_customization
 end

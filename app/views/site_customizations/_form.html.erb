@@ -1,0 +1,55 @@
+
+    <%= form_for :site_customization,:remote=>true,:html => {:id =>'site_customization', :multipart => true, :class => "form-horizontal" } do |f| %>
+      <div class="modal-header  clearfix">
+        <h4 class="modal-h3" id="myModalLabel">Customize Font Style</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-sm-12 editable-wrapper">
+              <%= f.label :menu_name, "Menu Name", :class => "col-lg-3 col-md-3 col-sm-3 control-label" %>
+              <div class="col-lg-7 col-md-7 col-sm-7">
+                <%= f.text_field :menu_name, :class => "form-control" %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-sm-12 editable-wrapper">
+              <%= f.label :bg_color, "Background Color", :class => "col-lg-3 col-md-3 col-sm-3 control-label" %>
+              <div class="col-lg-7 col-md-7 col-sm-7">
+                <%= f.text_field :bg_color, :class => "form-control" %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%if action_name == "new"%>
+          <div class="row">
+            <div class="form-group">
+              <div class="col-lg-12 col-md-12 col-sm-12 editable-wrapper">
+                <%= f.label :text_color, "Text Color", :class => "col-lg-3 col-md-3 col-sm-3 control-label" %>
+                <div class="col-lg-7 col-md-7 col-sm-7">
+                  <%= f.text_field :text_color, :class => "form-control" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group">
+              <div class="col-lg-12 col-md-12 col-sm-12 editable-wrapper">
+                <%= f.label :font_style, "Font Family", :class => "col-lg-3 col-md-3 col-sm-3 control-label" %>
+                <div class="col-lg-7 col-md-7 col-sm-7">
+                  <%= f.text_field :font_style, :class => "form-control" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <%end%>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="submitForm('#site_customization')">Save</button>
+      </div>
+    <%end%>
+
