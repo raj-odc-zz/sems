@@ -17,8 +17,10 @@
                 <div class="container">
                   <ul>
                     <li><a href="#tab1" data-toggle="tab">Personal Details</a></li>
-                    <li><a href="#tab2" data-toggle="tab">Board & Class</a></li>
-                    <li><a href="#tab3" data-toggle="tab">Address</a></li>
+                    <%unless action_name == "new"%>
+                      <li><a href="#tab2" data-toggle="tab">Address</a></li>
+                    <%end%>
+                    <li><a href="#tab3" data-toggle="tab">Board & Class</a></li>
                   </ul>
                 </div>
               </div>
@@ -27,16 +29,13 @@
               <div class="tab-pane" id="tab1">
                 <%= render :partial => "persoanl_details.html.erb", locals: {f: f,profile: profile}%>
               </div>
-              <div class="tab-pane" id="tab2">
-                <%= render :partial => "board_details.html.erb", locals: {f: f,profile: profile}%>
-              </div>
+              <%unless action_name == "new"%>
+                <div class="tab-pane" id="tab2">
+                  <%= render :partial => "address/address_info.html.erb", locals: {f: f,profile: profile}%>
+                </div>
+              <%end%>
               <div class="tab-pane" id="tab3">
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                  <%= render :partial => "address/address_info.html.erb", locals: {f: f,profile: profile, addr_type_name: "primary"}%>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                  <%= render :partial => "address/address_info.html.erb", locals: {f: f,profile: profile, addr_type_name: "secondary"}%>
-                </div>
+                <%= render :partial => "board_details.html.erb", locals: {f: f,profile: profile}%>
                 <div class="form-group" id="class_list">
                   <div class="col-lg-12 col-md-12 col-sm-12 editable-wrapper">
                     <div class="col-lg-4 col-md-4 col-sm-4"></div>

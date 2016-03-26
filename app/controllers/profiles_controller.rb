@@ -8,6 +8,7 @@ class ProfilesController < ApplicationController
     begin
       user_has_profile?
       @profile = Profile.new(user_id: params.try(:[],"user_id"))
+      initiate_address
     rescue Exception => e
       redirect_to root_path
     end
@@ -18,6 +19,7 @@ class ProfilesController < ApplicationController
   end
   #
   def edit
+    initiate_address
   end
   #
   private
@@ -39,7 +41,10 @@ class ProfilesController < ApplicationController
   def load_data
     @boards = Board.all
     @profile_types = ProfileType.all
-    @profile.addresses.new unless @profile.addresses.present?
+  end
 
+  def initiate_address
+    @profile.addresses.new(address_type_id: AddressType.find_by_name("primary").try(:id)) unless @profile.addresses.primary_address.present?
+    @profile.addresses.new(address_type_id: AddressType.find_by_name("secondary").try(:id)) unless @profile.addresses.secondary_address.present?
   end
 end
