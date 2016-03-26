@@ -17,6 +17,7 @@ function AddressListDataSource(){
                 fields: {
                     id: { type: "string", editable: false},
                     address: { type: "string", editable: true},
+
                 }
             }
         },

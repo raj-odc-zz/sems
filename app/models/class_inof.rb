@@ -1,0 +1,2 @@
+class ClassInof < ApplicationRecord
+end

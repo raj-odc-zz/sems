@@ -1,0 +1,27 @@
+<% content_for :head do %>
+  <%= javascript_include_tag "class_list" %>
+<% end %>
+
+<section class="main-content">
+  <div class="container">
+    <div class="clearfix">
+    </div>
+      <br />
+      <div class="row">
+        <a data-toggle="modal" href="#" clas="new-icon" onclick="openModal('/class_lists/new','#classListModal')">New</a>
+      </div>
+      <div class = "row">
+        <div class="col-lg-10 col-md-10 col-sm-10">
+          <div id="classList"></div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="classListModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content"></div>
+  </div>
+</div>
+

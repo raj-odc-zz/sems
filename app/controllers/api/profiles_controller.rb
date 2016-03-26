@@ -17,7 +17,7 @@ class Api::ProfilesController < ApplicationController
   #
   def update
     @profile.update_attributes(permit_all_params(:profile))
-    render json: { status: 200}
+    render json: (messgaes =profile.try(:errors).try(:messages)).present? ? {error: messages, status:500} :  {status: 200}
   rescue
     render json: { status: 500,error: @profile.try(:errors).try(:messages)}
   end

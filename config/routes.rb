@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :class_lists do
     collection do
       get "update_class_list"
+      get "class_list_infos"
     end
   end
   resources :fees_types
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
     resources :addresses
     resources :address_types
     resources :board_types
+    resources :class_lists
     resources :fees_types
     resources :message_types
     resources :profile_types

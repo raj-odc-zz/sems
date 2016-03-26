@@ -29,7 +29,7 @@
   <div class="col-lg-12 col-md-12 col-sm-12 editable-wrapper">
     <%= f.label :class_list_id, :class => "col-lg-3 col-md-3 col-sm-3 control-label" %>
     <div class="col-lg-7 col-md-7 col-sm-7">
-      <%= f.select :class_list_id, options_from_collection_for_select([f.object.class_list], "id", "class_name",f.object.try(:class_list_id)),{}, :class => "form-control" %>
+      <%= f.select :class_list_id, options_from_collection_for_select(f.object.class_list.nil? ? [] :       [f.object.class_list], "id", "class_name",f.object.try(:class_list_id)),{}, :class => "form-control" %>
     </div>
   </div>
 </div>
