@@ -1,0 +1,46 @@
+<% content_for :head do %>
+  <%= javascript_include_tag "staff" %>
+<% end %>
+
+<section class="main-content">
+  <div class="container">
+    <div class="clearfix">
+    </div>
+      <br />
+      <div class="row">
+        <a data-toggle="modal" href="#" clas="new-icon" onclick="openModal('/staffs/mark_entry','#staffModal')">New</a>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <div class="form-group">
+            <div class ="col-lg-4 col-md-4 col-sm-4">Class</div>
+            <div class ="col-lg-8 col-md-8 col-sm-8">
+              <%= select_tag(:class_list, options_for_select(@class_lists.collect{|a| [a.class_name,a.id]}),:class => "form-control", :onchange => "changeMarkList()") %>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <div class="form-group">
+            <div class ="col-lg-4 col-md-4 col-sm-4">Exam</div>
+            <div class ="col-lg-8 col-md-8 col-sm-8">
+              <%= select_tag(:exam_types, options_for_select(@exam_types.collect{|a| [a.name,a.id]}),:class => "form-control", :onchange => "changeMarkList()") %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class = "row">
+        <div class="col-lg-10 col-md-10 col-sm-10">
+          <div id="markListGrid"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<!-- Modal -->
+<div class="modal fade" id="staffModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content"></div>
+  </div>
+</div>
+

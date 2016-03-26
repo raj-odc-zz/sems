@@ -2,7 +2,7 @@ class Api::MarksController < ApplicationController
   before_action :find_by_id, only: [:update,:destroy]
   #
   def index
-    @marks = Mark.fetch_by_class params.try(:[],"class_list_id")
+    @marks = Mark.fetch_by_class params.try(:[],"class_list_id"),params.try(:[],"exam_type_id")
     respond_to do |format|
       format.json { }
     end
