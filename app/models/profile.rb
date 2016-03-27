@@ -17,6 +17,9 @@ class Profile < ApplicationRecord
   # def self.name
   #   self.first_name.to_s +' '+ self.last_name.to_s
   # end
+  def name
+    first_name + ' ' + last_name
+  end
   class << self
     def load_data
       # return .all,Board.all,

@@ -49,7 +49,7 @@ function FeesStructureListGrid() {
             },
             {
                 field: "fees_type",
-                title: "FeesType"
+                title: "Fee Type"
             },
             {
                 field: "amount",

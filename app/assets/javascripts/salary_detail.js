@@ -44,12 +44,12 @@ function SalaryDetailListGrid() {
         sortable: true,
         columns: [
            {
-                field: "profile_id",
-                title: "Staff"
+                field: "staff_name",
+                title: "Staff Name"
             },
             {
-                field: "fees_type_id",
-                title: "FeesType"
+                field: "fees_type",
+                title: "Fee Type"
             },
             {
                 field: "amount",
