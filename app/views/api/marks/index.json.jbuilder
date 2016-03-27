@@ -8,7 +8,7 @@ json.data do |json|
     json.student_id student.try(:id)
     json.exam_type exam.try(:name)
     json.mark mark.try(:mark)
-    json.id exam.try(:id)
+    json.id mark.try(:id)
   end
 end
 

@@ -7,10 +7,15 @@ function markListDataSource(){
             read:{
               url: "/api/marks",
               dataType: "json",
-              data: { class_list_id: $("#class_list option:selected").val(),
-                      "exam_type_id": $("#exam_types option:selected").val()
-                    },
             },
+            parameterMap: function(data, type) {
+              if (type == "read") {
+                                  return {
+                                    class_list_id: $("#class_list option:selected").val(),
+                                    "exam_type_id": $("#exam_types option:selected").val()
+                                  }
+                                 }
+            }
         },
          schema: {
           total: 'total',
@@ -38,7 +43,7 @@ function markListDataSource(){
 }
 
  function markListGrid() {
-     jQuery("#markListGrid").kendoGrid({
+     $("#markListGrid").kendoGrid({
          dataSource: markListDataSource(),
          resizable: true,
           pageable: {
@@ -73,15 +78,15 @@ function markListDataSource(){
 
 function edit_systems(e){
   var dataItem = this.dataItem(jQuery(e.currentTarget).closest("tr"));
-  openModal("/roles/"+dataItem.id+"/edit","#roleModal")
+  openModal("/staffs/"+dataItem.id+"/edit","#staffModal")
 }
 
 function delete_systems(e){
   var dataItem = this.dataItem(jQuery(e.currentTarget).closest("tr"));
-  doDelete("/api/roles/"+dataItem.id,dataItem.id,'#roleList')
+  doDelete("/api/marks/"+dataItem.id,dataItem.id,'#markListGrid')
 }
 
   // window.location.href = "/roles/new"
 function changeMarkList(){
-
+  refereshGrid("#markListGrid")
 }

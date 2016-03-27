@@ -1,6 +1,6 @@
 <%= form_for [:api, mark], :remote=>true,:html => {:id =>'markList', :multipart => true, :class => "form-horizontal" } do |f| %>
       <div class="modal-header  clearfix">
-        <h4 class="modal-h3" id="myModalLabel">User</h4>
+        <h4 class="modal-h3" id="myModalLabel">Mark</h4>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -8,7 +8,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 editable-wrapper">
               <%= f.label :subject_id, "Subject", :class => "col-lg-3 col-md-3 col-sm-3 control-label" %>
               <div class="col-lg-4 col-md-4 col-sm-4">
-                <%= f.select :subject_id, options_from_collection_for_select(@subs, "id", "name"),{}, :class => "form-control" %>
+                <%= f.select :subject_id, options_from_collection_for_select(@subs, "id", "name",f.object.subject_id),{}, :class => "form-control" %>
               </div>
             </div>
           </div>
@@ -18,7 +18,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 editable-wrapper">
               <%= f.label :profile_id, "Student Name", :class => "col-lg-3 col-md-3 col-sm-3 control-label" %>
               <div class="col-lg-4 col-md-4 col-sm-4">
-                <%= f.select :profile_id, options_from_collection_for_select(@students, "id", "first_name"),{}, :class => "form-control" %>
+                <%= f.select :profile_id, options_from_collection_for_select(@students, "id", "first_name",f.object.profile_id),{}, :class => "form-control" %>
               </div>
             </div>
           </div>
@@ -28,7 +28,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 editable-wrapper">
               <%= f.label :exam_type_id, "Exam Type", :class => "col-lg-3 col-md-3 col-sm-3 control-label" %>
               <div class="col-lg-4 col-md-4 col-sm-4">
-                <%= f.select :exam_type_id, options_from_collection_for_select(@exam_types, "id", "name"),{}, :class => "form-control" %>
+                <%= f.select :exam_type_id, options_from_collection_for_select(@exam_types, "id", "name",f.object.exam_type_id),{}, :class => "form-control" %>
               </div>
             </div>
           </div>
