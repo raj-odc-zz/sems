@@ -16,7 +16,6 @@ module HelperMethods
     @staff ||= Student.find_by_user_id current_user.try(:id)
   end
 
-
   def staff_user
     @student ||= Staff.find_by_user_id current_user.try(:id)
   end

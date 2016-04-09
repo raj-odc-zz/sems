@@ -12,10 +12,10 @@
                     <a href="#" >Student<b class="caret"></b></a>
                     <ul class="dropdown-menu message-dropdown">
                         <li class="message-preview">
-                            <a href="#" >Student List</a>
+                            <a href="/students" >Student List</a>
                         </li>
                         <li class="message-footer">
-                            <a href="#">Add Student</a>
+                            <a data-toggle="modal" href="#" onclick="openModal('/users/new?profile_type=student','#userModal')">Add Student</a>
                         </li>
                     </ul>
                 </li>
@@ -26,10 +26,10 @@
                             <a href="/staffs/mark_list" >Manage Mark</a>
                         </li>
                         <li class="message-preview">
-                            <a href="#" >Staff List</a>
+                            <a href="/staffs" >Staff List</a>
                         </li>
                         <li class="message-footer">
-                            <a href="#">Add Staff</a>
+                            <a data-toggle="modal" href="#" onclick="openModal('/users/new?profile_type=staff','#userModal')">Add Staff</a>
                         </li>
                     </ul>
                 </li>
@@ -75,3 +75,12 @@
         </div>
         <!-- /#page-wrapper -->
     </div>
+
+<!-- Modal -->
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+

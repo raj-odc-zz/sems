@@ -2,7 +2,7 @@ class Api::StudentsController < ApplicationController
   before_action :find_by_id, only: [:update,:destroy]
   #
   def index
-    @students = Student.fetch_by_class params.try(:[],"class_list_id")
+    @students = Student.all#Student.fetch_by_class params.try(:[],"class_list_id")
     respond_to do |format|
       format.json { }
     end

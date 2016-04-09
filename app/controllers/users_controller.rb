@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   #
+  layout :fetch_layouts
   before_action :find_by_id, only: [:edit,:update,:destroy]
   before_action :load_data, only: [:edit,:new]
   def index
@@ -17,7 +18,8 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    @user = User.new()
+    @user.profile_type = params.try(:[],"profile_type")
   end
 
   def edit

@@ -1,0 +1,39 @@
+<% content_for :head do %>
+  <script type="text/javascript">
+    var staff_id = "<%=@staff.id%>"
+  </script>
+  <%= javascript_include_tag "work_experiences"%>
+<% end %>
+<div class="container">
+  <section>
+    <%= form_for [:api, profile], :remote=>true,:html => {:id =>'experience', :multipart => true, :class => "form-horizontal" } do |f| %>
+      <%= f.fields_for :work_experiences  do |builder| %>
+        <div class="form-group">
+          <div class="col-lg-12 col-md-12 col-sm-12 editable-wrapper">
+            <%= builder.label :name, :class => "col-lg-3 col-md-3 col-sm-3 control-label" %>
+            <div class="col-lg-7 col-md-7 col-sm-7">
+              <%= builder.text_field :name, required: true,:class => "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-12 col-md-12 col-sm-12 editable-wrapper">
+            <%= builder.label :years, :class => "col-lg-3 col-md-3 col-sm-3 control-label" %>
+            <div class="col-lg-7 col-md-7 col-sm-7">
+              <%= builder.text_field :years, required: true, :class => "form-control" %>
+            </div>
+          </div>
+        </div>
+      <%end%>
+      <div class="form-group" id="class_list">
+          <div class="col-lg-12 col-md-12 col-sm-12 editable-wrapper">
+            <div class="col-lg-4 col-md-4 col-sm-4"></div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <input type="button" class = "btn btn-warning form-control" onclick="submitForm('#experience')" value="Save" />
+            </div>
+          </div>
+        </div>
+    <%end%>
+  </section>
+</div>
+

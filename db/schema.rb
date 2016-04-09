@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160326112220) do
+ActiveRecord::Schema.define(version: 20160327060541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -266,6 +266,16 @@ ActiveRecord::Schema.define(version: 20160326112220) do
     t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   end
 
+  create_table "work_experiences", force: :cascade do |t|
+    t.integer  "order"
+    t.integer  "profile_id"
+    t.string   "name"
+    t.string   "years"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_work_experiences_on_profile_id", using: :btree
+  end
+
   add_foreign_key "addresses", "address_types"
   add_foreign_key "addresses", "profiles"
   add_foreign_key "boards", "board_types"
@@ -298,4 +308,5 @@ ActiveRecord::Schema.define(version: 20160326112220) do
   add_foreign_key "user_previous_details", "profiles"
   add_foreign_key "users", "profiles"
   add_foreign_key "users", "roles"
+  add_foreign_key "work_experiences", "profiles"
 end

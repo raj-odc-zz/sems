@@ -1,0 +1,28 @@
+<% content_for :head do %>
+  <%= javascript_include_tag "staff_list" %>
+<% end %>
+
+<section class="main-content">
+  <div class="container">
+    <div class="clearfix">
+    </div>
+      <br />
+      <div class="row">
+        <!-- <a data-toggle="modal" href="#" clas="new-icon" onclick="openModal('/student/new','#studentModal')">New</a> -->
+      </div>
+      <div class = "row">
+        <div class="col-lg-10 col-md-10 col-sm-10">
+          <div id="staffInfo"></div>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+<!-- Modal -->
+<div class="modal fade" id="studentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content"></div>
+  </div>
+</div>
+

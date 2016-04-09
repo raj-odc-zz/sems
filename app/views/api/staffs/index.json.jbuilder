@@ -1,5 +1,5 @@
 json.data do |json|
-  json.array!(@staff) do |staff|
+  json.array!(@staffs) do |staff|
     json.first_name staff.first_name
     json.last_name staff.last_name
     json.id staff.id
@@ -7,4 +7,4 @@ json.data do |json|
   end
 end
 
-json.total @staff.size
+json.total @staffs.size

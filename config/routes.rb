@@ -16,20 +16,23 @@ Rails.application.routes.draw do
   end
   resources :exam_infos
   resources :fees_types
+  resources :fees_structures
   resources :message_types
   resources :profile_types
   resources :profiles
   resources :roles
   resources :users
-  resources :site_customizations
-  resources :fees_structures
   resources :salary_details
+  resources :site_customizations
   resources :staffs do
     collection do
       get "mark_list"
       get "mark_entry"
     end
   end
+  resources :students
+  resources :work_experiences
+
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~API ROUTES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   namespace :api, :defaults => { :format => 'json',layout: false } do
     resources :addresses
@@ -42,16 +45,17 @@ Rails.application.routes.draw do
     end
     resources :exam_types
     resources :fees_types
+    resources :fees_structures
     resources :marks
     resources :message_types
     resources :profile_types
     resources :profiles
     resources :roles
+    resources :salary_details
+    resources :staffs
     resources :students
     resources :subjects
     resources :users
-    resources :fees_structures
-    resources :salary_details
   end
   # resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
