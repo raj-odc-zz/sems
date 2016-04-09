@@ -21,13 +21,16 @@
                       <li><a href="#tab2" data-toggle="tab">Address</a></li>
                     <%end%>
                     <li><a href="#tab3" data-toggle="tab">Board & Class</a></li>
+                    <%unless action_name == "new"%>
+                        <li><a href="#tab4" data-toggle="tab">Fees Details</a></li>
+                    <%end%>
                   </ul>
                 </div>
               </div>
             </div>
             <div class="tab-content">
               <div class="tab-pane" id="tab1">
-                <%= render :partial => "persoanl_details.html.erb", locals: {f: f,profile: profile}%>
+                <%= render :partial => "personal_details.html.erb", locals: {f: f,profile: profile}%>
               </div>
               <%unless action_name == "new"%>
                 <div class="tab-pane" id="tab2">
@@ -45,6 +48,11 @@
                   </div>
                 </div>
               </div>
+              <%unless action_name == "new"%>
+                  <div class="tab-pane" id="tab4">
+                    <%= render :partial => "students/fees_info.html.erb", locals: {f: f,profile: profile}%>
+                  </div>
+              <%end%>
             </div>
           </div>
         </div>

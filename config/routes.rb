@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   #
-  root to: "profiles#index"
+  root to: "dashboard#index"
   #
+  resources :dashboard
   resources :address
   resources :address_types
   resources :board_types
@@ -38,11 +39,7 @@ Rails.application.routes.draw do
     resources :addresses
     resources :address_types
     resources :board_types
-    resources :class_lists do
-      member do
-        get "class_list_info"
-      end
-    end
+    resources :class_lists
     resources :exam_types
     resources :fees_types
     resources :fees_structures
@@ -53,7 +50,11 @@ Rails.application.routes.draw do
     resources :roles
     resources :salary_details
     resources :staffs
-    resources :students
+    resources :students do
+      member do
+        get 'fees_info'
+      end
+    end
     resources :subjects
     resources :users
   end
