@@ -13,6 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require common_js/bootstrap.min.js
+//= require highcharts
+//= require drilldown
+//= require dashboard
 
 function deleteConformation(onclickMethod){
   $('#deleteProductModal').on('show.bs.modal', function () {

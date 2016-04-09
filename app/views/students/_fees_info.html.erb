@@ -1,0 +1,11 @@
+<div class = "row">
+  <div class="col-lg-10 col-md-10 col-sm-10">
+    <div id="fees_info_List">
+      <%profile.amount_transactions.each do |transaction|%>
+         <%=transaction.amount%>
+          <%=transaction.parent.fees_type.name%>
+      <%end%>
+    </div>
+  </div>
+</div>
+<%#=profile.class_lists.inspect%>

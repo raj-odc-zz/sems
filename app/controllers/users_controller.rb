@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  #
+   layout :fetch_layouts
   before_action :find_by_id, only: [:edit,:update,:destroy]
   before_action :load_data, only: [:edit,:new]
   def index
