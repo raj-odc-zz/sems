@@ -2,9 +2,9 @@ class Api::SalaryDetailsController < ApplicationController
   before_action :find_by_id, only: [:update,:destroy]
   #
   def index
-    salary_details = SalaryDetail.all
+    @salary_details = SalaryDetail.all
     respond_to do |format|
-       format.json { render json: { data: salary_details ,total: salary_details.size}}
+       format.json
     end
   end
   #

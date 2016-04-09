@@ -11,6 +11,10 @@ class Student < ApplicationRecord
   default_scope { joins(:profile_type).where("profile_types.name =?","student")}
   scope :fetch_by_class, ->(class_id) { where("profiles.class_list_id=?",class_id)}
   scope :fetch_by_classes, ->(class_ids) { where("profiles.class_list_id IN(?)",class_ids)}
+
+  def name
+    first_name + ' ' + last_name
+  end
 end
 
 

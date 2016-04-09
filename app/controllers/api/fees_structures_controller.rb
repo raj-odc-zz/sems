@@ -2,9 +2,9 @@ class Api::FeesStructuresController < ApplicationController
   before_action :find_by_id, only: [:update,:destroy]
   #
   def index
-    fees_structures = FeesStructure.all
+    @fees_structures = FeesStructure.all
     respond_to do |format|
-       format.json { render json: { data: fees_structures ,total: fees_structures.size}}
+       format.json
     end
   end
   #

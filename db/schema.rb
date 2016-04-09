@@ -38,11 +38,17 @@ ActiveRecord::Schema.define(version: 20160327060541) do
   end
 
   create_table "amount_transactions", force: :cascade do |t|
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "parent_id"
-    t.string   "parent_name"
+    t.string   "parent_type"
     t.float    "amount"
+    t.integer  "profile_id"
+    t.string   "payment_mode"
+    t.string   "bill_no"
+    t.date     "transaction_date"
+    t.integer  "processed_by"
+    t.string   "transaction_id"
   end
 
   create_table "board_types", force: :cascade do |t|

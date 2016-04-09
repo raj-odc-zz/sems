@@ -16,6 +16,10 @@ class Staff < ApplicationRecord
 
   #
   scope :fetch_by_class, ->(class_id) { joins(:class_lists).where("class_lists.id=?",class_id)}
+
+  def name
+    first_name + ' ' + last_name
+  end
 end
 
 
