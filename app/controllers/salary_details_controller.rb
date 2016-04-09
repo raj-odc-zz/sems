@@ -9,6 +9,10 @@ class SalaryDetailsController < ApplicationController
   def new
     @salary_detail = SalaryDetail.new
   end
+
+  def pdf_pay_bil
+    fetch_values
+  end
   #
   #
   def edit
@@ -19,4 +23,4 @@ class SalaryDetailsController < ApplicationController
   def find_by_id
     @salary_detail = SalaryDetail.find_by_id params[:id]
   end
-end 
+end

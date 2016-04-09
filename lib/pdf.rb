@@ -1,22 +1,10 @@
+require 'open3'
 class Pdf
   class << self
-    def execute_command
-      return ["/usr/local/bin/wkhtmltopdf",
-         "-T",
-         "0mm",
-         "-B",
-         "0mm",
-         "-L",
-         "0mm",
-         "-R",
-         "0mm",
-         "cover",
-         "public/cover.html",
-         "toc",
-         "--xsl-style-sheet",
-         "vendor/modified_pdf_toc.xsl",
-         "public/mail_html_#{@dealer.try(:id)}.html",
-         "public/mail_html_#{@dealer.try(:id)}_pdf.pdf"
+    def execute_command(html_string)
+      return ["wkhtmltopdf",
+         html_string,
+        "public/mail_html_#{@dealer.try(:id)}_pdf.pdf"
        ]
     end
 

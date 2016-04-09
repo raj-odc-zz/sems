@@ -10,7 +10,7 @@ class Staff < ApplicationRecord
   # belongs_to :logo_image
   has_many :user_previous_details
   has_many :salary_detail
-  has_many :payment_detail
+  has_many :amount_transactions,:foreign_key => :profile_id, :primary_key => :id
   #
   accepts_nested_attributes_for :work_experiences
 
