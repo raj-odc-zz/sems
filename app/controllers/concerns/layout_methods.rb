@@ -3,7 +3,7 @@ module LayoutMethods
   #
   def fetch_layouts
     case action_name
-    when "new","edit","mark_entry"
+    when "new","edit","mark_entry","salary_detail_pdf"
       false
     else
       "application.html.erb"

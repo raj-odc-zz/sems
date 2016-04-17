@@ -1,0 +1,32 @@
+class Staff < ApplicationRecord
+  self.table_name = "profiles"
+  default_scope { joins(:profile_type).where("profile_types.name =?","staff")}
+  current_board = Board.last
+  default_scope { where("board_id =?",current_board.id) }
+  belongs_to :profile_type
+  belongs_to :board
+  has_many :addresses
+  has_many :staff_classes, :foreign_key => :profile_id, :primary_key => :id
+  has_many :class_lists , through: :staff_classes
+  has_many :work_experiences, :foreign_key => :profile_id, :primary_key => :id
+  # belongs_to :logo_image
+  has_many :user_previous_details
+<<<<<<< HEAD
+  has_many :salary_detail
+  has_many :amount_transactions,:foreign_key => :profile_id, :primary_key => :id
+  #
+  accepts_nested_attributes_for :work_experiences
+
+  #
+=======
+  has_many :salary_details, :foreign_key => :profile_id, :primary_key => :id
+  has_many :amount_transactions, :foreign_key => :profile_id, :primary_key => :id
+>>>>>>> deb58115b8ea21782a2b2a71238888f95118adb9
+  scope :fetch_by_class, ->(class_id) { joins(:class_lists).where("class_lists.id=?",class_id)}
+
+  def name
+    first_name + ' ' + last_name
+  end
+end
+
+

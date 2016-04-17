@@ -2,14 +2,17 @@ require 'open3'
 class Pdf
   class << self
     def execute_command(html_string)
+      path = "#{Rails.root.to_s}/public/html_string.html"
+      File.open(path,"wb+") { |f| f << html_string}
       return ["wkhtmltopdf",
-         html_string,
-        "public/mail_html_#{@dealer.try(:id)}_pdf.pdf"
+        path,
+        "#{Rails.root.to_s}/public/salary_#{Time.now.to_s.gsub(/\W+/,"")}.pdf"
        ]
     end
 
-    def execute_pdf
-      err = Open3.popen3(*self.execute_command) do |stdin, stdout, stderr, w|
+    def execute_pdf(html_string)
+      commends = self.execute_command(html_string)
+      err = Open3.popen3(*commends) do |stdin, stdout, stderr, w|
         begin
           Timeout::timeout(300) do
             until stdout.eof? do
@@ -19,8 +22,9 @@ class Pdf
         rescue Timeout::Error
           Process.kill("KILL", w.pid)
         end
+        # temp_file.flush
       end
-      pusher_message("Preparing Email",90)
+      return commends[2]
     end
   end
 end

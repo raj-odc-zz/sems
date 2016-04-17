@@ -24,7 +24,11 @@ Rails.application.routes.draw do
   resources :profiles
   resources :roles
   resources :users
-  resources :salary_details
+  resources :salary_details do
+    collection do
+      get "salary_detail_pdf"
+    end
+  end
   resources :site_customizations
   resources :staffs do
     collection do

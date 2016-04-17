@@ -15,6 +15,7 @@ class Staff < ApplicationRecord
   has_many :amount_transactions, :foreign_key => :profile_id, :primary_key => :id
   accepts_nested_attributes_for :work_experiences
   scope :fetch_by_class, ->(class_id) { joins(:class_lists).where("class_lists.id=?",class_id)}
+  scope :fetch_by_ids, ->(ids) { where("profiles.id IN(?)",ids)}
 
   def name
     first_name + ' ' + last_name

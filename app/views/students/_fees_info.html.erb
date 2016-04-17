@@ -1,7 +1,7 @@
 <div class = "row">
   <div class="col-lg-10 col-md-10 col-sm-10">
     <div id="fees_info_List">
-      <%profile.amount_transactions.each do |transaction|%>
+      <%profile.try(:amount_transactions).to_a.each do |transaction|%>
          <%=transaction.amount%>
           <%=transaction.parent.fees_type.name%>
       <%end%>

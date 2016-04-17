@@ -13,7 +13,7 @@ class Profile < ApplicationRecord
   #
   accepts_nested_attributes_for :addresses
   #
-
+  scope :fetch_by_ids, ->(ids) { where("id IN(?)",ids)}
   # def self.name
   #   self.first_name.to_s +' '+ self.last_name.to_s
   # end
