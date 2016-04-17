@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+ruby "2.1.2"
+
 
 gem 'rails', :git => 'https://github.com/rails/rails.git', :branch => 'v5.0.0.beta2'
 
