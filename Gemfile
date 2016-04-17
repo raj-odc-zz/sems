@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby "2.2.2"
 
 
-gem 'rails', github: "rails/rails"#:git => 'https://github.com/rails/rails.git', :branch => 'v5.0.0.beta2'
+gem 'rails', :git => 'https://github.com/rails/rails.git', :branch => 'v5.0.0.beta2'
 
 gem 'pg'
 # Use SCSS for stylesheets
