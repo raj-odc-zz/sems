@@ -4,8 +4,8 @@
     <title>Sems</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
-    <%= stylesheet_link_tag   'application',"common_styles/bootstrap.min.css","common_styles/kendo.common.min.css",'common_styles/messi.min.css','common_styles/kendo.material.min.css', "kendo-custom", media: 'all' %>
-    <%= javascript_include_tag 'application', "common_js/kendo.all.min.js",'common_js/messi.min.js' %>
+    <%= stylesheet_link_tag   'application',"common_styles/bootstrap.min.css","common_styles/kendo.common.min.css",'common_styles/kendo.material.min.css', "kendo-custom", media: 'all' %>
+    <%= javascript_include_tag 'application', "/javascript/kendo.all.min.js",'common_js/messi.min.js' %>
     <%= yield(:head) %>
   </head>
   <body>
