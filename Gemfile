@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
-ruby "2.1.2"
+ruby "2.3.0"
 
 
-gem 'rails', :git => 'https://github.com/rails/rails.git', :branch => 'v5.0.0.beta2'
+gem 'rails', github: "rails/rails"#:git => 'https://github.com/rails/rails.git', :branch => 'v5.0.0.beta2'
 
 gem 'pg'
 # Use SCSS for stylesheets
@@ -14,7 +14,7 @@ gem 'coffee-rails', github: "rails/coffee-rails"
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
-
+gem 'rails_12factor', group: :production
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
