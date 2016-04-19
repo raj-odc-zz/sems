@@ -13,8 +13,11 @@ class User < ActiveRecord::Base
   private
 
   def create_profile
-    profile_type = ProfileType.find_by_name self.profile_type
-    self.create(:profile_type_id => profile_type.try(:id))
+    if self.profile_type
+      profile_type = ProfileType.find_by_name self.profile_type
+      current_board = Board.last
+      Profile.create(:profile_type_id => profile_type.try(:id), :user_id => self.id, :board_id => current_board.id)
+    end
   end
   #private
 =begin
