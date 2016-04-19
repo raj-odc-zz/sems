@@ -17,7 +17,6 @@ AddressType.where("name IN(?)", ["primary","secondary"]).delete_all
 Subject.where("name IN(?)",subjects).delete_all
 ExamType.where("name IN(?)",exam_types).delete_all
 role =Role.create({name: "admin"})
-User.create!({username: "admin",:email => "arunkumarit02@gmail.com", :role_id => role.id, :password => "admin123", :password_confirmation => "admin123" })
 board_type = BoardType.create(:name => "test type")
 board = Board.create(:name => "test clg", :board_type_id => board_type.try(:id))
 class_list=ClassList.create(board_id: board.id,class_name: "test",section: "A",major:"CSE")
@@ -26,3 +25,6 @@ AddressType.create({:name => "primary"})
 AddressType.create({:name => "secondary"})
 subjects.each {|sub| Subject.create(:class_list_id => class_list.id,name: sub)}
 exam_types.each {|name| ExamType.create(:name => name, :class_list_id => class_list.id) }
+user = User.new({username: "admin",:email => "arunkumarit02@gmail.com", :role_id => role.id, :password => "admin123", :password_confirmation => "admin123" })
+user.profile_type = "Test Profile"
+user.save
