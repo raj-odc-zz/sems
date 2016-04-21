@@ -8,10 +8,16 @@
     <%= javascript_include_tag 'application', "/javascript/kendo.all.min.js",'common_js/messi.min.js' %>
     <%= yield(:head) %>
   </head>
+
   <body>
-    <!-- Navigation Main menu -->
-    <%= render :partial => "layouts/main_navigation_menu.html.erb"%>
-    <!-- body content -->
-    <%= yield %>
+
+  <div id="wrapper">
+     <%= render :partial => "layouts/header.html.erb"%>
+
+    <div id="page-wrapper">
+      <%= yield%>
+    </div>
+  </div>
+
   </body>
 </html>
