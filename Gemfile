@@ -46,3 +46,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise', github: 'plataformatec/devise', branch: 'master'
 gem 'cancancan'
+gem 'bootstrap_sb_admin_base_v2'
