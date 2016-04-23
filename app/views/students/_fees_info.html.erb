@@ -1,11 +1,27 @@
-<div class = "row">
-  <div class="col-lg-10 col-md-10 col-sm-10">
-    <div id="fees_info_List">
-      <%profile.try(:amount_transactions).to_a.each do |transaction|%>
-         <%=transaction.amount%>
-          <%=transaction.parent.fees_type.name%>
-      <%end%>
+<% content_for :head do %>
+    <%= javascript_include_tag "fees_detail" %>
+<% end %>
+
+<section class="main-content">
+  <div class="container">
+    <div class="clearfix">
+    </div>
+    <br />
+    <div class="row">
+      <a data-toggle="modal" href="#" clas="new-icon" onclick="openModal('/fees_structures/new','#feesdetailModal')">New</a>
+    </div>
+    <div class = "row">
+      <div class="col-lg-10 col-md-10 col-sm-10">
+        <div id="fees_detail_List"></div>
+      </div>
     </div>
   </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="feesdetailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content"></div>
+  </div>
 </div>
-<%#=profile.class_lists.inspect%>
+

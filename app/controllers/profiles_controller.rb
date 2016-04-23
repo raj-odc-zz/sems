@@ -22,7 +22,7 @@ class ProfilesController < ApplicationController
   end
   #
   def edit
-    redirect_to new_profile_path unless user_has_profile?
+    #redirect_to new_profile_path #unless user_has_profile?
     initiate_address
   end
   #
