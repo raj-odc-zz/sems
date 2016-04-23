@@ -11,14 +11,20 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(permit_all_params(:user))
-    respond_to do |format|
-      format.js
-    end
+    @user.build_profile(permit_all_params(:profile)).save
+    render json: { status: 200 }
   end
 
   def new
     @user = User.new()
-    @user.profile_type = params.try(:[],"profile_type")
+    if params.try(:[],"profile_type")
+      profile_type = ProfileType.find_by_name(params[:profile_type]).id
+      current_board = Board.last
+      @profile = @user.build_profile(:profile_type_id => profile_type, :board_id => current_board.id)
+    else
+      @user.profile_type = nil
+    end
+
   end
 
   def edit

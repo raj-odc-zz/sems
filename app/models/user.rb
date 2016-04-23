@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_one :profile
   belongs_to :role
   attr_accessor :profile_type
-  after_create :create_profile
+  #after_create :create_profile
 
   private
 
