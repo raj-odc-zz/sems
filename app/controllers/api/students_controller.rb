@@ -4,7 +4,7 @@ class Api::StudentsController < ApplicationController
   def index
     @students = Student.all#Student.fetch_by_class params.try(:[],"class_list_id")
     respond_to do |format|
-      format.json { }
+      format.json { render json: { data: @students,total: @students.size}}
     end
   end
   #

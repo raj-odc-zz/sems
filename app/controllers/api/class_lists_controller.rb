@@ -4,7 +4,7 @@ class Api::ClassListsController < ApplicationController
   def index
     @class_lists = ClassList.class_list_by_board current_board.try(:id)
     respond_to do |format|
-      format.json
+      format.json { render json: { data: @class_lists,total: @class_lists.size}}
     end
   end
   #

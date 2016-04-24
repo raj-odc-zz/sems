@@ -4,7 +4,7 @@ class Api::MarksController < ApplicationController
   def index
     @marks = Mark.fetch_by_class params.try(:[],"class_list_id"),params.try(:[],"exam_type_id")
     respond_to do |format|
-      format.json { }
+      format.json { render json: { data: @marks,total: @marks.size}}
     end
   end
   #
