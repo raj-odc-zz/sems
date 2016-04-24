@@ -15,7 +15,6 @@
 //= require common_js/bootstrap.min.js
 //= require highcharts
 //= require drilldown
-//= require bootstrap_sb_admin_base_v2
 
 function deleteConformation(onclickMethod){
   $('#deleteProductModal').on('show.bs.modal', function () {
