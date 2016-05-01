@@ -59,7 +59,6 @@ function classListGrid() {
             {command: [
                         { name:"edit",text: "Edit",click: edit_systems },
                         { name:"Delete", text: "Delete", click: delete_systems },
-                        { name:"show", text: "Show", click: showClass },
                       ]
             },
 
@@ -70,16 +69,13 @@ function classListGrid() {
 
 function edit_systems(e){
     var dataItem = this.dataItem(jQuery(e.currentTarget).closest("tr"));
-    openModal("address/"+dataItem.id+"/edit","#classListModal")
+    openModal("class_lists/"+dataItem.id+"/edit","#classListModal")
 }
 
 function delete_systems(e){
     var dataItem = this.dataItem(jQuery(e.currentTarget).closest("tr"));
-    doDelete("/api/addresses/"+dataItem.id,dataItem.id,'#classListModal')
+    doDelete("/api/class_lists/"+dataItem.id,dataItem.id,'#classList')
 }
 
-function showClass(e){
-    var dataItem = this.dataItem(jQuery(e.currentTarget).closest("tr"));
-    window.location.href = "class_lists/"+dataItem.id+"/class_list_info"
-}
+
 
