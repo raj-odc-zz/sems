@@ -32,7 +32,7 @@ function studentDataSource(){
 }
 
 function studentGrid() {
-    jQuery("#studentInfo").kendoGrid({
+    jQuery("#userinfo").kendoGrid({
         dataSource: studentDataSource(),
         resizable: true,
         pageable: {
@@ -49,14 +49,23 @@ function studentGrid() {
                 field: "last_name",
                 title: "Last Name"
             },
-            // {command: [
-            //             { name:"edit",text: "Edit",click: edit_systems },
-            //             { name:"Delete", text: "Delete", click: delete_systems },
-            //             { name:"show", text: "Exam Info", click: showExamInfo },
-            //           ]
-            // },
+             {command: [
+                         { name:"edit",text: "Edit Profile",click: edit_systems },
+                         { name:"Delete", text: "Delete", click: delete_systems },
+                       ]
+             },
 
         ],
     });
 
+}
+
+function edit_systems(e){
+    var dataItem = this.dataItem(jQuery(e.currentTarget).closest("tr"));
+    window.location.href = "/profiles/"+dataItem.id+"/edit?profile_type=students"
+}
+
+function delete_systems(e){
+    var dataItem = this.dataItem(jQuery(e.currentTarget).closest("tr"));
+    doDelete("/api/profiles/"+dataItem.id,dataItem.id,'#userinfo')
 }

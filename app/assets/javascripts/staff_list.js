@@ -32,30 +32,41 @@ function staffDataSource(){
     return datasource
 }
 
-function staffGrid() {
-    jQuery("#staffInfo").kendoGrid({
-        dataSource: staffDataSource(),
-        resizable: true,
-        pageable: {
-            refresh: true,
-        },
-        scrollable: false,
-        sortable: true,
-        columns: [
-            {
-                field: "first_name",
-                title: "First Name"
+    function staffGrid() {
+        jQuery("#userinfo").kendoGrid({
+            dataSource: staffDataSource(),
+            resizable: true,
+            pageable: {
+                refresh: true,
             },
-            {
-                field: "last_name",
-                title: "Last Name"
-            },
-            {
-                field: "subject",
-                title: "Subject"
-            },
+            scrollable: false,
+            sortable: true,
+            columns: [
+                {
+                    field: "first_name",
+                    title: "First Name"
+                },
+                {
+                    field: "last_name",
+                    title: "Last Name"
+                },
+                {command: [
+                    { name:"edit",text: "Edit Profile",click: edit_systems },
+                    { name:"Delete", text: "Delete", click: delete_systems },
+                ]
+                },
 
-        ],
-    });
+            ],
+        });
 
-}
+    }
+
+    function edit_systems(e){
+        var dataItem = this.dataItem(jQuery(e.currentTarget).closest("tr"));
+        window.location.href = "/profiles/"+dataItem.id+"/edit?profile_type=staffs"
+    }
+
+    function delete_systems(e){
+        var dataItem = this.dataItem(jQuery(e.currentTarget).closest("tr"));
+        doDelete("/api/profiles/"+dataItem.id,dataItem.id,'#userinfo')
+    }

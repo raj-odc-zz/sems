@@ -3,7 +3,7 @@ class Api::StaffsController < ApplicationController
   def index
     @staffs = Staff.all#fetch_by_class params.try(:[],"class_list_id")
     respond_to do |format|
-      format.json { }
+      format.json { render json: { data: @staffs,total: @staffs.size}}
     end
   end
   def create

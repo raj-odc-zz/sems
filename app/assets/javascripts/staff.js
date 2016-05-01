@@ -78,12 +78,12 @@ function markListDataSource(){
 
 function edit_systems(e){
   var dataItem = this.dataItem(jQuery(e.currentTarget).closest("tr"));
-  openModal("/staffs/"+dataItem.id+"/edit","#staffModal")
+    window.location.href = "/profiles/"+dataItem.id+"/edit"
 }
 
 function delete_systems(e){
   var dataItem = this.dataItem(jQuery(e.currentTarget).closest("tr"));
-  doDelete("/api/marks/"+dataItem.id,dataItem.id,'#markListGrid')
+  doDelete("/profiles/"+dataItem.id,dataItem.id,'#markListGrid')
 }
 
   // window.location.href = "/roles/new"
