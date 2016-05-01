@@ -24,6 +24,6 @@ class ClassListsController < ApplicationController
   private
   #
   def find_by_id
-    @class_list = Role.find_by_id params[:id]
+    @class_list = ClassList.find_by_id params[:id]
   end
 end

@@ -7,7 +7,7 @@ default: &default
 development:
   <<: *default
   username: postgres
-  password: root
+  password: postgres
   database: sems_development
 
 # Warning: The database defined as "test" will be erased and
