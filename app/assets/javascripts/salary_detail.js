@@ -16,7 +16,6 @@ function SalaryDetailListDataSource(){
                 id: "id",
                 fields: {
                     id: { type: "string", editable: false},
-                    board_name: { type: "string", editable: true},
                     staff_name: { type: "string", editable: true},
                     fees_type: { type: "string", editable: true},
                     amount: { type: "string", editable: true},

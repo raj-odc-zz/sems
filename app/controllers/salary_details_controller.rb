@@ -4,7 +4,7 @@ class SalaryDetailsController < ApplicationController
   before_action :find_by_id, only: [:edit]
   #
   def index
-    @salary_details = SalaryDetail.all
+  #  @salary_details = SalaryDetail.all
   end
 
   def new

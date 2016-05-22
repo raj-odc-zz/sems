@@ -16,7 +16,6 @@ function FeesStructureListDataSource(){
                 id: "id",
                 fields: {
                     id: { type: "string", editable: false},
-                    board_name: { type: "string", editable: true},
                     class_name: { type: "string", editable: true},
                     fees_type: { type: "string", editable: true},
                     amount: { type: "string", editable: true},
@@ -44,7 +43,7 @@ function FeesStructureListGrid() {
         sortable: true,
         columns: [
            {
-                field: "class_list",
+                field: "class_name",
                 title: "Class"
             },
             {

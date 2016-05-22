@@ -4,7 +4,7 @@ class Api::SalaryDetailsController < ApplicationController
   def index
     @salary_details = SalaryDetail.all
     respond_to do |format|
-      format.json { render json: { data: @salary_details,total: @salary_details.size}}
+      format.json
     end
   end
   #
