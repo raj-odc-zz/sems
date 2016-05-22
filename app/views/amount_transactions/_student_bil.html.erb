@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+        <div class="invoice-title">
+          <h2>Bill</h2><h3 class="pull-right">Order # 12345</h3>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-6">
+            <address>
+              <strong>Bill To:</strong><br>
+              <%=profile.name%>,<br>
+                <%="#{class_list.class_name}-{class_list.section},#{class_list.try(:major)}"%><br>
+              <%=board.try(:name)%>
+            </address>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <address>
+              <strong>Payment Method:</strong><br>
+              Cash<br>
+            </address>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><strong>summary</strong></h3>
+          </div>
+          <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4">Fees Type</div>
+            <div class="col-lg-4 col-md-4 col-sm-4">Fee</div>
+            <div class="col-lg-4 col-md-4 col-sm-4">Paid Amount</div>
+          </div>
+          <div class="row">
+            <%profile.amount_transactions.each do |trans|%>
+              <div class="row">
+                <%payment = FeesStructure.find_by_id(trans.parent_id)%>
+                <div class="col-lg-4 col-md-4 col-sm-4"><%=payment.try(:fees_type).try(:name)%></div>
+                <div class="col-lg-4 col-md-4 col-sm-4"><%=payment.try(:fees_type).try(:amount)%></div>
+                <div class="col-lg-4 col-md-4 col-sm-4"><%=trans.try(:amount)%></div>
+              </div>
+            <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

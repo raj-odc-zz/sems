@@ -9,4 +9,9 @@ class FeesStructure < ApplicationRecord
   def update_board_id
   	self.board_id=Board.last.id
   end
+
+  private
+  def name
+    self.fees_type.name
+  end
 end
