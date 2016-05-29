@@ -10,6 +10,7 @@ class Api::AmountTransactionsController < ApplicationController
   #
   def create
     params['amount_transaction']['parent_type'] = 'FeesStructure'
+    params['amount_transaction']['transaction_date'] = Date.today()
     amount_transaction= AmountTransaction.create(permit_all_params(:amount_transaction))
     render json: { status: 200}
   rescue

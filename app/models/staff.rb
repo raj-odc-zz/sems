@@ -16,6 +16,9 @@ class Staff < ApplicationRecord
   accepts_nested_attributes_for :work_experiences
   scope :fetch_by_class, ->(class_id) { joins(:class_lists).where("class_lists.id=?",class_id)}
   scope :fetch_by_ids, ->(ids) { where("profiles.id IN(?)",ids)}
+  scope :male_staff, -> { where('profiles.gender=?', 'male') }
+  scope :female_staff, -> { where('profiles.gender=?', 'female') }
+
 
   def name
     first_name + ' ' + last_name

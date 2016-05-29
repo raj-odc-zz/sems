@@ -13,6 +13,8 @@ class Student < ApplicationRecord
   default_scope { where("board_id =?",current_board.id) }
   scope :fetch_by_class, ->(class_id) { where("profiles.class_list_id=?",class_id)}
   scope :fetch_by_classes, ->(class_ids) { where("profiles.class_list_id IN(?)",class_ids)}
+  scope :male_student_by_class, ->(class_id) {where('profiles.class_list_id=? and profiles.gender=?',class_id, 'male')}
+  scope :female_student_by_class, ->(class_id) {where('profiles.class_list_id=? and profiles.gender=?',class_id, 'female')}
 
   def name
     first_name + ' ' + last_name
