@@ -20,6 +20,16 @@ class Profile < ApplicationRecord
   #   self.first_name.to_s +' '+ self.last_name.to_s
   # end
 
+  enum gender_list: {
+           'Male'   => 'male',
+           'Female'  => 'female',
+           'Other' => 'other'
+       }
+  enum married_status_list: {
+           'Single'   => 'single',
+           'Married'  => 'married'
+       }
+
   def name
     first_name + ' ' + last_name
   end
