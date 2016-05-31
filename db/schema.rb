@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328172447) do
+ActiveRecord::Schema.define(version: 20160530164239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,14 @@ ActiveRecord::Schema.define(version: 20160328172447) do
     t.date     "transaction_date"
     t.integer  "processed_by"
     t.string   "transaction_id"
+  end
+
+  create_table "batch_lists", force: :cascade do |t|
+    t.string   "academic_year"
+    t.integer  "board_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["board_id"], name: "index_batch_lists_on_board_id", using: :btree
   end
 
   create_table "board_types", force: :cascade do |t|
@@ -189,6 +197,15 @@ ActiveRecord::Schema.define(version: 20160328172447) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "route_stop_infos", force: :cascade do |t|
+    t.string   "name"
+    t.float    "amount"
+    t.integer  "transport_route_info_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["transport_route_info_id"], name: "index_route_stop_infos_on_transport_route_info_id", using: :btree
+  end
+
   create_table "salary_details", force: :cascade do |t|
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
@@ -212,6 +229,19 @@ ActiveRecord::Schema.define(version: 20160328172447) do
     t.index ["boards_id"], name: "index_site_customizations_on_boards_id", using: :btree
   end
 
+  create_table "staff_class_batches", force: :cascade do |t|
+    t.integer  "batch_list_id"
+    t.integer  "profile_id"
+    t.integer  "class_list_id"
+    t.integer  "subject_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["batch_list_id"], name: "index_staff_class_batches_on_batch_list_id", using: :btree
+    t.index ["class_list_id"], name: "index_staff_class_batches_on_class_list_id", using: :btree
+    t.index ["profile_id"], name: "index_staff_class_batches_on_profile_id", using: :btree
+    t.index ["subject_id"], name: "index_staff_class_batches_on_subject_id", using: :btree
+  end
+
   create_table "staff_classes", force: :cascade do |t|
     t.integer  "class_list_id"
     t.integer  "profile_id"
@@ -228,12 +258,42 @@ ActiveRecord::Schema.define(version: 20160328172447) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "student_class_batches", force: :cascade do |t|
+    t.integer  "batch_list_id"
+    t.integer  "profile_id"
+    t.integer  "class_list_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["batch_list_id"], name: "index_student_class_batches_on_batch_list_id", using: :btree
+    t.index ["class_list_id"], name: "index_student_class_batches_on_class_list_id", using: :btree
+    t.index ["profile_id"], name: "index_student_class_batches_on_profile_id", using: :btree
+  end
+
+  create_table "student_transports", force: :cascade do |t|
+    t.integer  "route_stop_info_id"
+    t.integer  "profile_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["profile_id"], name: "index_student_transports_on_profile_id", using: :btree
+    t.index ["route_stop_info_id"], name: "index_student_transports_on_route_stop_info_id", using: :btree
+  end
+
   create_table "subjects", force: :cascade do |t|
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "name"
     t.integer  "class_list_id"
     t.index ["class_list_id"], name: "index_subjects_on_class_list_id", using: :btree
+  end
+
+  create_table "transport_route_infos", force: :cascade do |t|
+    t.string   "name"
+    t.float    "amount"
+    t.integer  "profile_id"
+    t.string   "bus_info"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_transport_route_infos_on_profile_id", using: :btree
   end
 
   create_table "user_previous_details", force: :cascade do |t|
@@ -284,6 +344,7 @@ ActiveRecord::Schema.define(version: 20160328172447) do
 
   add_foreign_key "addresses", "address_types"
   add_foreign_key "addresses", "profiles"
+  add_foreign_key "batch_lists", "boards"
   add_foreign_key "boards", "board_types"
   add_foreign_key "class_lists", "boards"
   add_foreign_key "exam_types", "class_lists"
@@ -303,14 +364,25 @@ ActiveRecord::Schema.define(version: 20160328172447) do
   add_foreign_key "profiles", "users"
   add_foreign_key "ranks", "exam_types"
   add_foreign_key "ranks", "profiles"
+  add_foreign_key "route_stop_infos", "transport_route_infos"
   add_foreign_key "salary_details", "boards"
   add_foreign_key "salary_details", "fees_types"
   add_foreign_key "salary_details", "profiles"
   add_foreign_key "site_customizations", "boards", column: "boards_id"
+  add_foreign_key "staff_class_batches", "batch_lists"
+  add_foreign_key "staff_class_batches", "class_lists"
+  add_foreign_key "staff_class_batches", "profiles"
+  add_foreign_key "staff_class_batches", "subjects"
   add_foreign_key "staff_classes", "class_lists"
   add_foreign_key "staff_classes", "profiles"
   add_foreign_key "staff_classes", "subjects"
+  add_foreign_key "student_class_batches", "batch_lists"
+  add_foreign_key "student_class_batches", "class_lists"
+  add_foreign_key "student_class_batches", "profiles"
+  add_foreign_key "student_transports", "profiles"
+  add_foreign_key "student_transports", "route_stop_infos"
   add_foreign_key "subjects", "class_lists"
+  add_foreign_key "transport_route_infos", "profiles"
   add_foreign_key "user_previous_details", "profiles"
   add_foreign_key "users", "profiles"
   add_foreign_key "users", "roles"

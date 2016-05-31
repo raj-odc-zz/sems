@@ -7,6 +7,10 @@ class Profile < ApplicationRecord
   # belongs_to :logo_image
   has_many :user_previous_details
   has_many :salary_details
+  has_many :staff_class_batches
+  has_many :student_class_batches
+  has_many :student_transports
+
   # has_many :amount_transactions
   # validattions
   # validates_presence_of :user
