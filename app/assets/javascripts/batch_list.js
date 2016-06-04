@@ -16,10 +16,7 @@ function batchListDataSource(){
                 id: "id",
                 fields: {
                     id: { type: "string", editable: false},
-                    board_name: { type: "string", editable: true},
-                    batch_name: { type: "string", editable: true},
-                    section: { type: "string", editable: true},
-                    major: { type: "string", editable: true},
+                    academic_year: { type: "string", editable: true},
                 }
             }
         },
