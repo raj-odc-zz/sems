@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :address
   resources :address_types
   resources :board_types
+  resources :batch_lists
   resources :class_lists do
     collection do
       get 'update_class_list'
@@ -48,6 +49,7 @@ Rails.application.routes.draw do
     resources :address_types
     resources :board_types
     resources :class_lists
+    resources :batch_lists
     resources :exam_types
     resources :fees_types
     resources :fees_structures

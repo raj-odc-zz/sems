@@ -1,0 +1,25 @@
+<%= form_for [:api, batch_list], :remote=>true,:html => {:id =>'class', :multipart => true, :class => "form-horizontal" } do |f| %>
+
+  <div class="modal-header  clearfix">
+    <h4 class="modal-h3" id="myModalLabel">BatchList</h4>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="form-group">
+        <div class="col-lg-12 col-md-12 col-sm-12 editable-wrapper">
+          <%= f.label :academic_year, "Batch Name", :class => "col-lg-3 col-md-3 col-sm-3 control-label" %>
+          <div class="col-lg-7 col-md-7 col-sm-7">
+            <%= f.text_field :academic_year, :class => "form-control" %>
+          </div>
+        </div>
+      </div>
+      <%= f.hidden_field :board_id, value: current_board.try(:id) %>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-primary" onclick="submitForm('#class','#BatchList')">Save</button>
+  </div>
+
+<%end%>
+
