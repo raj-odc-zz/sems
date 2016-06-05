@@ -19,7 +19,7 @@
 function deleteConformation(onclickMethod){
   $('#deleteProductModal').on('show.bs.modal', function () {
     var modal = $(this)
-    modal.find('.conform').attr("onclick",onclickMethod)
+    modal.find('.confirm').attr("onclick",onclickMethod)
   });
 }
 
@@ -37,6 +37,14 @@ function submitForm(form_id,gridId){
   var url = form.attr( "action" );
   var method = form.attr( "method" );
   ajaxCall(url,method,valuesToSubmit,gridId)
+}
+
+function submitForm_batch(form_id,gridId){
+    var form = $(form_id)
+    var valuesToSubmit = form.serialize();
+    var url = form.attr( "action" );
+    var method = form.attr( "method" );
+    ajaxCall(url,method,valuesToSubmit,gridId)
 }
 
 function closeAllModals(){

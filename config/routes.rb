@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :address_types
   resources :board_types
   resources :batch_lists
+  resources :student_class_batches
   resources :class_lists do
     collection do
       get 'update_class_list'
@@ -60,6 +61,7 @@ Rails.application.routes.draw do
     resources :roles
     resources :salary_details
     resources :staffs
+    resources :student_class_batches
     resources :students do
       member do
         get 'fees_info'

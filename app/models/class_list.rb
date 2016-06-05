@@ -11,4 +11,8 @@ class ClassList < ApplicationRecord
   scope :find_all_by_ids, ->(ids) { where("id IN(?)",ids)}
   #
   delegate :name, :to => :board, :prefix => true, :allow_nil => true
+
+  def class_section
+    self.class_name + "-" + self.section
+  end
 end

@@ -2,7 +2,6 @@ class Api::ClassListsController < ApplicationController
   before_action :find_by_id, only: [:update,:destroy]
   #
   def index
-    byebug
     @class_lists = ClassList.class_list_by_board current_board.try(:id)
     respond_to do |format|
       format.json #{ render json: { data: @class_lists,total: @class_lists.size}}

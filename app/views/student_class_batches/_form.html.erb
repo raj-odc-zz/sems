@@ -1,0 +1,31 @@
+<%= form_for [:api, @student_class_batch], :remote=>true,:html => {:id =>'student_class_batch', :multipart => true, :class => "form-horizontal" } do |f| %>
+
+  <div class="modal-header  clearfix">
+    <h4 class="modal-h3" id="myModalLabel">BatchList</h4>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="form-group">
+        <div class="col-lg-12 col-md-12 col-sm-12 editable-wrapper">
+          <%= f.label :batch_list_id, :class => "col-lg-3 col-md-3 col-sm-3 control-label" %>
+          <div class="col-lg-7 col-md-7 col-sm-7">
+            <%= f.select :batch_list_id, options_from_collection_for_select(f.object.batch_list.nil? ? BatchList.all.to_a : [f.object.batch_list], "id", "academic_year",f.object.try(:batch_list_id)),{}, :class => "form-control" %>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 editable-wrapper">
+          <%= f.label :class_list_id, :class => "col-lg-3 col-md-3 col-sm-3 control-label" %>
+          <div class="col-lg-7 col-md-7 col-sm-7">
+            <%= f.select :class_list_id, options_from_collection_for_select(f.object.class_list.nil? ? ClassList.all.to_a : [f.object.class_list], "id", "class_section",f.object.try(:class_list_id)),{}, :class => "form-control" %>
+          </div>
+        </div>
+      </div>
+      <%= f.hidden_field :profile_id, value: params[:profile_id] %>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-primary" onclick="submitForm_batch('#student_class_batch','#student_batch_info')">Save</button>
+  </div>
+
+<%end%>
+
